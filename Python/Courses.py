@@ -3,8 +3,8 @@ import math
 import urllib2
 from BeautifulSoup import BeautifulSoup
 
-file = open("animation-ta.txt", "w")
-page = urllib2.urlopen("http://www.cdm.depaul.edu/academics/Pages/Current/Requirements-MA-In-Animation-Technical-Artist.aspx")
+file = open("se-softwareDev.txt", "w")
+page = urllib2.urlopen("http://www.cdm.depaul.edu/academics/Pages/Current/Requirements-MS-SE-Software-Development.aspx")
 soup = BeautifulSoup(page)
 tables = soup.findAll( "table", {"class":"courseList"} )
 for table in tables:
