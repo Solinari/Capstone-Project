@@ -68,9 +68,12 @@ def findDegreeConcentrations(myDegreeLinks, myFrontUrl):
     for degree in myDegreesAndConcentrations:
         print(degree)
 
+    return myDegreesAndConcentrations
+
 # end function 2
 degreeLinks = findDegreeLinks(url)
 degreesAndConcentrations = findDegreeConcentrations(degreeLinks, fronturl)
+print(degreesAndConcentrations)
 
 
 
