@@ -13,7 +13,7 @@ def findDegreeLinks(url):
     urlOpen = urllib.request.urlopen(url)
     soup = BeautifulSoup(urlOpen, 'html.parser')
 
-    # get all the program url's and append them 
+    # get all the program url's and append them
     test1 = soup.find_all("p", "programIndexHeader")
     #print(len(test1))
 
@@ -32,7 +32,7 @@ def findDegreeConcentrations(myDegreeLinks, myFrontUrl):
         concentrationLink = myFrontUrl + degree
         #print(concentrationLink)
         outputSize = len(myDegreesAndConcentrations)
-        
+
 
         # find if concentrations are present
         # append them if found
@@ -46,15 +46,15 @@ def findDegreeConcentrations(myDegreeLinks, myFrontUrl):
             sample = str(i).split("\"")
             #print(sample)
 
-            
+
 
             for element in sample:
-                
+
                  if "/academics/Pages" in element:
                      #print(element)
                      if fronturl not in element:
                          element = fronturl + element
-                         
+
                      myDegreesAndConcentrations.append(element)
 
         # if you didn't find anything in the concentrations
@@ -64,9 +64,9 @@ def findDegreeConcentrations(myDegreeLinks, myFrontUrl):
 
 
     #all degrees with their concentrations
-    print(len(myDegreesAndConcentrations))
-    for degree in myDegreesAndConcentrations:
-        print(degree)
+    #print(len(myDegreesAndConcentrations))
+    #for degree in myDegreesAndConcentrations:
+        #print(degree)
 
     return myDegreesAndConcentrations
 
@@ -74,13 +74,3 @@ def findDegreeConcentrations(myDegreeLinks, myFrontUrl):
 degreeLinks = findDegreeLinks(url)
 degreesAndConcentrations = findDegreeConcentrations(degreeLinks, fronturl)
 print(degreesAndConcentrations)
-
-
-
-
-
-
-
-
-
-
