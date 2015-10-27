@@ -11,8 +11,8 @@ classList = []
 # for item in list:
 file = open('BIT.txt', "r") #file of  class required for degree. Can change to whatever we need
 line = file.readline()
-str = line.replace('|',' ')
-list1 = str.split(' ')
+string = line.replace('|',' ')
+list1 = string.split(' ')
 
 i = 0
 while i < len(list1):
@@ -30,12 +30,27 @@ soup = BeautifulSoup(urlOpen,'html.parser')
 header = soup.find("h2","CDMPageTitle")
 text = header.getText()
 divs = soup.find("div","schedule")
-classInfo = soup.find("div","classInfo")
+classInfo = soup.find_all("div","classInfo")
+for info in classInfo:
 #for item in divs:
-#    term = soup.find("p","CTIPageSectionHeader")
-#    pText = term.getText()
-#    classInfo = soup.find("div","classInfo")
-print(classInfo)
+    term = soup.find("p","CTIPageSectionHeader")
+    pText = term.getText()
+    print(pText)
+    classText = str(info).split("<div>")
+    for element in classText:
+        if "Section" in element:
+            print(element.replace("</div>",""))
+        if "Class number" in element:
+            print(element.replace("</div>",""))
+        if "Meeting time" in element:
+            print(element.replace("</div>",""))
+        if "Location" in element:
+            print(element.replace("</div>",""))
+        if "Instructor" in element:
+            inst = soup.find("a","href=\"/about/pages/people/facultyinfo.aspx")
+            instText = inst.getText()
+            print(instText)
+    #print(classText)
 #print (divs)
 #print (text)
 #print (soup)
