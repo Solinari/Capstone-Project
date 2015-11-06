@@ -46,10 +46,6 @@ for info in classInfo:
             print(element.replace("</div>",""))
         if "Location" in element:
             print(element.replace("</div>",""))
-        if "Instructor" in element:
-            inst = soup.find("a","href=\"/about/pages/people/facultyinfo.aspx")
-            instText = inst.getText()
-            print(instText)
     #print(classText)
 #print (divs)
 #print (text)
