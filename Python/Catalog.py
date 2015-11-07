@@ -37,6 +37,8 @@ for info in classInfo:
     pText = term.getText()
     print(pText)
     classText = str(info).split("<div>")
+    # class text is a list
+    #print("Class text is: {}".format(classText))
     for element in classText:
         if "Section" in element:
             print(element.replace("</div>",""))
