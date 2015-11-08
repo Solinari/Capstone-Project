@@ -21,33 +21,40 @@ while i < len(list1):
     url = "http://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=" + subject + "&CatalogNbr=" + cNum
     test = url in classList
     if test == False:
-        classList.append(url)
-    i = i + 2
+        #classList.append(url)
+    #i = i + 2
 
-print (classList[0])
-urlOpen = urllib.request.urlopen(classList[0])
-soup = BeautifulSoup(urlOpen,'html.parser')
-header = soup.find("h2","CDMPageTitle")
-text = header.getText()
-divs = soup.find("div","schedule")
-classInfo = soup.find_all("div","classInfo")
-for info in classInfo:
+    #print (classList[0])
+        urlOpen = urllib.request.urlopen(url)
+        print('{} {}'.format(subject, cNum))
+        soup = BeautifulSoup(urlOpen,'html.parser')
+        header = soup.find("h2","CDMPageTitle")
+        text = header.getText()
+        divs = soup.find("div","schedule")
+        classInfo = soup.find_all("div","classInfo")
+        for info in classInfo:
 #for item in divs:
-    term = soup.find("p","CTIPageSectionHeader")
-    pText = term.getText()
-    print(pText)
-    classText = str(info).split("<div>")
+            term = soup.find("p","CTIPageSectionHeader")
+            pText = term.getText()
+            print(pText)
+            classText = str(info).split("<div>")
     # class text is a list
     #print("Class text is: {}".format(classText))
-    for element in classText:
-        if "Section" in element:
-            print(element.replace("</div>",""))
-        if "Class number" in element:
-            print(element.replace("</div>",""))
-        if "Meeting time" in element:
-            print(element.replace("</div>",""))
-        if "Location" in element:
-            print(element.replace("</div>",""))
+            for element in classText:
+                if "Section" in element:
+                    print(element.replace("</div>",""))
+                if "Class number" in element:
+                    print(element.replace("</div>",""))
+                if "Meeting time" in element:
+                    print(element.replace("</div>",""))
+                if "Location" in element:
+                    print(element.replace("</div>",""))
+    i = i + 2
+# <<<<<<< Updated upstream
+# =======
+#         if "Instructor" in element:
+#             print(element.replace("<a>",""))
+# >>>>>>> Stashed changes
     #print(classText)
 #print (divs)
 #print (text)
