@@ -60,31 +60,31 @@ def runParse():
                         #for item in divs:
                         term = soup.find("p","CTIPageSectionHeader")
                         pText = term.getText()
-                        print(pText)
+                        #print(deWhiteSpaceElement(pText))
                         classText = str(info).split("<div>")
 
-                        newDataRow.append(pText)
+                        newDataRow.append(deWhiteSpaceElement(pText))
 
                         for element in classText:
                             if "Section" in element:
                                 cleanElement = deWhiteSpaceElement(deDivElement(element))
                                 newDataRow.append(cleanElement)
-                                print(cleanElement)
+                                #print(cleanElement)
 
                             if "Class number" in element:
                                 cleanElement = deWhiteSpaceElement(deDivElement(element))
                                 newDataRow.append(cleanElement)
-                                print(cleanElement)
+                                #print(cleanElement)
 
                             if "Meeting time" in element:
                                 cleanElement = deWhiteSpaceElement(deDivElement(element))
                                 newDataRow.append(cleanElement)
-                                print(cleanElement)
+                                #print(cleanElement)
 
                             if "Location" in element:
                                 cleanElement = deWhiteSpaceElement(deDivElement(element))
                                 newDataRow.append(cleanElement)
-                                print(cleanElement)
+                                #print(cleanElement)
 
                         #this would be instructor when its found
                         #TODO - Instructor
