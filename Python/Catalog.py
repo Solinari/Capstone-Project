@@ -32,24 +32,29 @@ while i < len(list1):
         text = header.getText()
         divs = soup.find("div","schedule")
         classInfo = soup.find_all("div","classInfo")
-        for info in classInfo:
-#for item in divs:
-            term = soup.find("p","CTIPageSectionHeader")
-            pText = term.getText()
+        term = soup.find_all("p","CTIPageSectionHeader")
+        for item in term:
+            pText = item.getText()
             print(pText)
-            classText = str(info).split("<div>")
-    # class text is a list
-    #print("Class text is: {}".format(classText))
-            for element in classText:
-                if "Section" in element:
-                    print(element.replace("</div>",""))
-                if "Class number" in element:
-                    print(element.replace("</div>",""))
-                if "Meeting time" in element:
-                    print(element.replace("</div>",""))
-                if "Location" in element:
-                    print(element.replace("</div>",""))
-    i = i + 2
+        #print(classInfo)
+#         for info in classInfo:
+# #for item in divs:
+#             term = soup.find("p","CTIPageSectionHeader")
+#             pText = term.getText()
+#             print(pText)
+#             classText = str(info).split("<div>")
+#     # class text is a list
+#     #print("Class text is: {}".format(classText))
+#             for element in classText:
+#                 if "Section" in element:
+#                     print(element.replace("</div>",""))
+#                 if "Class number" in element:
+#                     print(element.replace("</div>",""))
+#                 if "Meeting time" in element:
+#                     print(element.replace("</div>",""))
+#                 if "Location" in element:
+#                     print(element.replace("</div>",""))
+#     i = i + 2
 # <<<<<<< Updated upstream
 # =======
 #         if "Instructor" in element:

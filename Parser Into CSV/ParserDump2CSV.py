@@ -33,62 +33,61 @@ def runParse():
                 url = "http://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=" + subject + "&CatalogNbr=" + cNum
                 test = url in classList
                 if test == False:
-                        classList.append(url)
-                i = i + 2
+                    #classList.append(url)
+                    newDataRow = []
+                    urlOpen = urllib.request.urlopen(url)
+                    course = subject + " " cNum
+                    newDataRow.append(course)
+                    soup = BeautifulSoup(urlOpen,'html.parser')
+                    header = soup.find("h2","CDMPageTitle")
+                    text = header.getText()
+                    divs = soup.find("div","schedule")
+                    classInfo = soup.find_all("div","classInfo")
+                    for info in classInfo:
+                        #for item in divs:
+                        term = soup.find("p","CTIPageSectionHeader")
+                        pText = term.getText()
+                        print(pText)
+                        classText = str(info).split("<div>")
 
-        print(classList[0])
-        urlOpen = urllib.request.urlopen(classList[0])
-        soup = BeautifulSoup(urlOpen,'html.parser')
-        header = soup.find("h2","CDMPageTitle")
-        text = header.getText()
-        divs = soup.find("div","schedule")
-        classInfo = soup.find_all("div","classInfo")
-        for info in classInfo:
-        #for item in divs:
-                term = soup.find("p","CTIPageSectionHeader")
-                pText = term.getText()
-                print(pText)
-                classText = str(info).split("<div>")
+                        newDataRow.append(pText)
 
-                newDataRow = []
-                
-                newDataRow.append(pText)
-
-                for element in classText:
-                        if "Section" in element:
+                        for element in classText:
+                            if "Section" in element:
                                 elementwodiv = element.replace("</div>","")
                                 elementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
                                 #print(elementwospace)
-                                                        
-                        if "Class number" in element:
+
+                            if "Class number" in element:
                                 elementwodiv = element.replace("</div>","")
                                 nelementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
                                 #print(elementwospace)
-                                
-                        if "Meeting time" in element:
-                                elementwodiv = element.replace("</div>","")
-                                elementworn = elementwodiv.replace("\r\n","")
-                                elementwospace = elementworn.replace("  ", "")
-                                newDataRow.append(elementwospace)
-                                #print(elementwospace)
-                                
-                        if "Location" in element:
+
+                            if "Meeting time" in element:
                                 elementwodiv = element.replace("</div>","")
                                 elementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
                                 #print(elementwospace)
 
-                #this would be instructor when its found
-                #TODO - Instructor
+                            if "Location" in element:
+                                elementwodiv = element.replace("</div>","")
+                                elementworn = elementwodiv.replace("\r\n","")
+                                elementwospace = elementworn.replace("  ", "")
+                                newDataRow.append(elementwospace)
+                                #print(elementwospace)
 
-                #then we append that row to the outer list
-                newDataRow.append("")
-                parsedData.append(newDataRow)
+                        #this would be instructor when its found
+                        #TODO - Instructor
+
+                        #then we append that row to the outer list
+                        newDataRow.append("")
+                        parsedData.append(newDataRow)
+                i = i + 2
         ##########################
         ###############
         # do data parse
