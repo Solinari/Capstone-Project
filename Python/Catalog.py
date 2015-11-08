@@ -19,38 +19,47 @@ while i < len(list1):
     subject = list1[i]
     cNum = list1[i + 1]
     url = "http://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=" + subject + "&CatalogNbr=" + cNum
-    test = url in classList
-    if test == False:
-        print (url)
-        urlOpen = urllib.request.urlopen(url)
-        print('{} {}'.format(subject, cNum))
-        soup = BeautifulSoup(urlOpen,'html.parser')
-        header = soup.find("h2","CDMPageTitle")
-        text = header.getText()
-        divs = soup.find("div","schedule")
-        classInfo = soup.find_all("div","classInfo")
-        term = soup.find_all("p","CTIPageSectionHeader")
-        for item in term:
-            pText = item.getText()
-            for info in classInfo:
-                print(pText)
-                classText = str(info).split("<div>")
-                for element in classText:
-                    if "Section" in element:
-                        print(element.replace("</div>",""))
-                    if "Class number" in element:
-                        print(element.replace("</div>",""))
-                    if "Meeting time" in element:
-                        print(element.replace("</div>",""))
-                    if "Location" in element:
-                        print(element.replace("</div>",""))
-    i = i + 2
-# <<<<<<< Updated upstream
-# =======
-#         if "Instructor" in element:
-#             print(element.replace("<a>",""))
-# >>>>>>> Stashed changes
-    #print(classText)
-#print (divs)
-#print (text)
-#print (soup)
+    #prints the url to pass into beautiful soup
+    print (url)
+    urlOpen = urllib.request.urlopen(url)
+    #print the course number
+    soup = BeautifulSoup(urlOpen,'html.parser')
+    header = soup.find("h2","CDMPageTitle")
+    text = header.getText()
+    print(text)
+    #print(text)
+#     divs = soup.find("div","schedule")
+#     classInfo = soup.find_all("div","classInfo")
+#     #finds all the quarters that the class is offered
+#     term = soup.find_all("p","CTIPageSectionHeader")
+#     for item in term:
+#         pText = item.getText()
+#         #for loop on getting all the sections for when a class is offered
+#         for info in classInfo:
+#             #prints the quarter when class is offerd
+#             print(pText)
+#             classText = str(info).split("<div>")
+#             for element in classText:
+#                 #prints the section number
+#                 if "Section" in element:
+#                     print(element.replace("</div>",""))
+#                 #prints the class number for registration
+#                 if "Class number" in element:
+#                     print(element.replace("</div>",""))
+#                 #prints when the classes meet
+#                 if "Meeting time" in element:
+#                     print(element.replace("</div>",""))
+#                 #prints where the classes meet
+#                 if "Location" in element:
+#                     print(element.replace("</div>",""))
+#     #moves to the next required class
+#     i = i + 2
+# # <<<<<<< Updated upstream
+# # =======
+# #         if "Instructor" in element:
+# #             print(element.replace("<a>",""))
+# # >>>>>>> Stashed changes
+#     #print(classText)
+# #print (divs)
+# #print (text)
+# #print (soup)
