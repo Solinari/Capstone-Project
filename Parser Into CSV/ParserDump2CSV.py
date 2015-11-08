@@ -49,11 +49,10 @@ def runParse():
                     #classList.append(url)
                     newDataRow = []
                     urlOpen = urllib.request.urlopen(url)
-                    course = subject + " " + cNum
-                    newDataRow.append(course)
                     soup = BeautifulSoup(urlOpen,'html.parser')
                     header = soup.find("h2","CDMPageTitle")
                     text = header.getText()
+                    newDataRow.append(text)
                     divs = soup.find("div","schedule")
                     classInfo = soup.find_all("div","classInfo")
                     for info in classInfo:
