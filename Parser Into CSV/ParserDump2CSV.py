@@ -60,28 +60,28 @@ def runParse():
                                 elementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
-                                print(elementwospace)
+                                #print(elementwospace)
                                                         
                         if "Class number" in element:
                                 elementwodiv = element.replace("</div>","")
                                 nelementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
-                                print(elementwospace)
+                                #print(elementwospace)
                                 
                         if "Meeting time" in element:
                                 elementwodiv = element.replace("</div>","")
                                 elementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
-                                print(elementwospace)
+                                #print(elementwospace)
                                 
                         if "Location" in element:
                                 elementwodiv = element.replace("</div>","")
                                 elementworn = elementwodiv.replace("\r\n","")
                                 elementwospace = elementworn.replace("  ", "")
                                 newDataRow.append(elementwospace)
-                                print(elementwospace)
+                                #print(elementwospace)
 
                 #this would be instructor when its found
                 #TODO - Instructor
@@ -113,6 +113,7 @@ def parsedDataToDataFrame(parsedData):
         instructor = []
 
         for row in parsedData:
+                print(row[2])
                 season.append(row[0])
                 section.append(row[1])
                 classNumber.append(row[2])
