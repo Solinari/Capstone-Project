@@ -8,9 +8,22 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import urllib.request
 
+def deDivElement(e):
+        '''remove just </div><div> tags'''
 
+        out = e.replace("</div>","")
+        
+        return out
+
+def deWhiteSpaceElement(e):
+        '''strip out the whitepsace in a parsed element'''
+        
+        out = "".join(line.strip() for line in e.split("\n"))
+
+        return out
+        
 def runParse():
-        '''run the fucking god damn parser'''
+        '''run parser'''
         parsedData =[]
         ##########################
         classList = []
@@ -54,32 +67,24 @@ def runParse():
 
                         for element in classText:
                             if "Section" in element:
-                                elementwodiv = element.replace("</div>","")
-                                elementworn = elementwodiv.replace("\r\n","")
-                                elementwospace = elementworn.replace("  ", "")
-                                newDataRow.append(elementwospace)
-                                #print(elementwospace)
+                                cleanElement = deWhiteSpaceElement(deDivElement(element))
+                                newDataRow.append(cleanElement)
+                                print(cleanElement)
 
                             if "Class number" in element:
-                                elementwodiv = element.replace("</div>","")
-                                nelementworn = elementwodiv.replace("\r\n","")
-                                elementwospace = elementworn.replace("  ", "")
-                                newDataRow.append(elementwospace)
-                                #print(elementwospace)
+                                cleanElement = deWhiteSpaceElement(deDivElement(element))
+                                newDataRow.append(cleanElement)
+                                print(cleanElement)
 
                             if "Meeting time" in element:
-                                elementwodiv = element.replace("</div>","")
-                                elementworn = elementwodiv.replace("\r\n","")
-                                elementwospace = elementworn.replace("  ", "")
-                                newDataRow.append(elementwospace)
-                                #print(elementwospace)
+                                cleanElement = deWhiteSpaceElement(deDivElement(element))
+                                newDataRow.append(cleanElement)
+                                print(cleanElement)
 
                             if "Location" in element:
-                                elementwodiv = element.replace("</div>","")
-                                elementworn = elementwodiv.replace("\r\n","")
-                                elementwospace = elementworn.replace("  ", "")
-                                newDataRow.append(elementwospace)
-                                #print(elementwospace)
+                                cleanElement = deWhiteSpaceElement(deDivElement(element))
+                                newDataRow.append(cleanElement)
+                                print(cleanElement)
 
                         #this would be instructor when its found
                         #TODO - Instructor
@@ -112,14 +117,13 @@ def parsedDataToDataFrame(parsedData):
         instructor = []
 
         for row in parsedData:
-                print(row[2])
                 season.append(row[0])
                 section.append(row[1])
                 classNumber.append(row[2])
                 meetingTime.append(row[3])
                 location.append(row[4])
                 instructor.append(row[5])
-        print("{}\n{}\n{}\n{}\n{}\n{}".format(season, section, classNumber, meetingTime, location, instructor))
+        #print("{}\n{}\n{}\n{}\n{}\n{}".format(season, section, classNumber, meetingTime, location, instructor))
         parsedDataDataFrame = pd.DataFrame({'Season':season,'Section':section,'Class Number':classNumber,'Meeting Time':meetingTime,'Location':location,'Instructor':instructor})
         parsedDataDataFrame.to_csv('Catalog.csv',index=False,columns=['Major','Season','Section','Class Number','Meeting Time','Location','Instructor'], engine='python')
 
