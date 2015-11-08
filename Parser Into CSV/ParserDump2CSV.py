@@ -36,7 +36,7 @@ def runParse():
                     #classList.append(url)
                     newDataRow = []
                     urlOpen = urllib.request.urlopen(url)
-                    course = subject + " " cNum
+                    course = subject + " " + cNum
                     newDataRow.append(course)
                     soup = BeautifulSoup(urlOpen,'html.parser')
                     header = soup.find("h2","CDMPageTitle")
