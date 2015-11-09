@@ -37,7 +37,7 @@ def runParse():
 
     depaul = "http://www.cdm.depaul.edu"
     parsedData = []
-    allMajors = ['BIT.txt','animation-animator.txt','animation-ta.txt','BIT.txt','cinema-post.txt','cinema-production.txt',
+    allMajors = ['animation-animator.txt','animation-ta.txt','BIT.txt','cinema-post.txt','cinema-production.txt',
                  'cinema-sound.txt','cns-governance.txt','cns-networkSecurity.txt','cns-security.txt','comp-finance.txt',
                  'comp-science.txt','e-commerce.txt','game-development.txt','hci.txt','health-informatics.txt',
                  'is-bi.txt','is-bs.txt','is-da.txt','is-enterprise.txt','is-standard.txt','it-project.txt',
@@ -88,27 +88,29 @@ def runParse():
                 for isClass in classInfo:
                     aClass = isClass.findAll("div")
 
-                    # make row. append
+                    # make row. append members as they are found
                     newCourseRow = []
+                    
+                    newCourseRow.append(subject + " " + cNum)
                     newCourseRow.append(thisSeason)
-                    print(str(aClass))
+                    #print(str(aClass))
                     for e in aClass:
                         cleanE = deWhiteSpaceElement(deDivElement(str(e)))
                         # print(type(e))
                         if "Section" in str(e):
-                            print(str(cleanE))
+                            #print(str(cleanE))
                             newCourseRow.append(cleanE)
                             
                         if "Class number" in str(e):
-                            print(str(cleanE))
+                            #print(str(cleanE))
                             newCourseRow.append(cleanE)
                             
                         if "Meeting time" in str(e):
-                            print(str(cleanE))
+                            #print(str(cleanE))
                             newCourseRow.append(cleanE)
 
                         if "Location" in str(e):
-                            print(str(cleanE))
+                            #print(str(cleanE))
                             newCourseRow.append(cleanE)
 
                         if "Instructor" in str(e):
@@ -119,16 +121,15 @@ def runParse():
                             except AttributeError as err:
                                 #print("professor name not found: {}".format(err))
                                 profName = ""
-                            print(profName)
+                            #print(profName)
                             newCourseRow.append(profName)
 
                             try:
                                 profUrl = depaul + ampersandCleaner(e.find("a").get("href"))
                             except AttributeError as err:
                                 #print("professor name not found: {}".format(err))
-                                profUrl = ""
-                                
-                            print(profUrl)
+                                profUrl = ""  
+                            #print(profUrl)
                             newCourseRow.append(profUrl)
                             
                             try:
@@ -137,15 +138,16 @@ def runParse():
                                 #print("professor name not found: {}".format(err))
                                 syllabusUrl = ""
                             
-                            print(syllabusUrl)
+                            #print(syllabusUrl)
                             newCourseRow.append(syllabusUrl)
-                    print(newCourseRow)
-                    break
+##                    print(newCourseRow)
+                    parsedData.append(newCourseRow)
+##                    break
                     
                     # append class to data found
-                    parsedData.append(newCourseRow)
-                break
-        break        
+                    
+##                break
+##        break        
         file.close()
 
 
@@ -158,6 +160,7 @@ def parsedDataToDataFrame(parsedData):
     '''dumps all rows to data frame'''
 
     # print(parsedData)
+    className = []
     season = []
     section = []
     classNumber = []
@@ -167,17 +170,21 @@ def parsedDataToDataFrame(parsedData):
     instructorUrl = []
     syllabusUrl = []
 
+    print("there are {} rows in my data".format(len(parsedData)))
     for row in parsedData:
-        season.append(row[0])
-        section.append(row[1])
-        classNumber.append(row[2])
-        meetingTime.append(row[3])
-        location.append(row[4])
-        instructor.append(row[5])
-        instructorUrl.append(row[6])
-        syllabusUrl.append(row[7])
-        
-    parsedDataDataFrame = pd.DataFrame({'Season': season,
+        className.append(row[0])
+        season.append(row[1])
+        section.append(row[2])
+        classNumber.append(row[3])
+        meetingTime.append(row[4])
+        location.append(row[5])
+        instructor.append(row[6])
+        instructorUrl.append(row[7])
+        syllabusUrl.append(row[8])
+
+    print(instructorUrl)
+    parsedDataDataFrame = pd.DataFrame({'Class Name': className,
+                                        'Season': season,
                                         'Section': section,
                                         'Class Number': classNumber,
                                         'Meeting Time': meetingTime,
@@ -188,13 +195,14 @@ def parsedDataToDataFrame(parsedData):
     parsedDataDataFrame.to_csv(
         'Catalog.csv',
         index=False,
-        columns=['Season',
+        columns=['Class Name',
+                 'Season',
                  'Section',
                  'Class Number',
                  'Meeting Time',
                  'Location',
                  'Instructor',
-                 'Instructor Url',
+                 'Insutructor Url',
                  'Syllabus Url'],
         engine='python')
 
