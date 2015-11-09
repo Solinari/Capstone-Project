@@ -95,7 +95,13 @@ def runParse():
                     newCourseRow.append(thisSeason)
                     #print(str(aClass))
                     for e in aClass:
-                        cleanE = deWhiteSpaceElement(deDivElement(str(e)))
+                        cleanE = ""
+                        temp = deWhiteSpaceElement(deDivElement(str(e)))
+
+                        # some of these aren't found..
+                        if len(cleanE) < len(temp):
+                            cleanE = temp
+                            
                         # print(type(e))
                         if "Section" in str(e):
                             #print(str(cleanE))
@@ -116,32 +122,40 @@ def runParse():
                         if "Instructor" in str(e):
                             # get professor + links - these sometimes are not present
                             # "" if not present
+                            profName = ""
                             try:
                                 profName = deWhiteSpaceElement(str(e.find("a").getText()))
                             except AttributeError as err:
-                                #print("professor name not found: {}".format(err))
-                                profName = ""
+                                print("professor name not found: on\n{}\n ERROR: {}\n".format(url, err))
+                                
                             #print(profName)
                             newCourseRow.append(profName)
 
+                            profUrl = "" 
                             try:
                                 profUrl = depaul + ampersandCleaner(e.find("a").get("href"))
                             except AttributeError as err:
-                                #print("professor name not found: {}".format(err))
-                                profUrl = ""  
+                                print("professor url not found on on\n{}\n ERROR: {}\n".format(url, err))
+                                 
                             #print(profUrl)
                             newCourseRow.append(profUrl)
-                            
+
+                            syllabusUrl = ""
                             try:
                                 syllabusUrl = depaul + deWhiteSpaceElement(ampersandCleaner(e.find("span").find("a").get("href")))
                             except AttributeError as err:
-                                #print("professor name not found: {}".format(err))
-                                syllabusUrl = ""
-                            
+                                print("syllabus url not found on\n{}\n ERROR: {}\n".format(url, err))
+                                
                             #print(syllabusUrl)
                             newCourseRow.append(syllabusUrl)
 ##                    print(newCourseRow)
-                    parsedData.append(newCourseRow)
+                    if len(newCourseRow) == 9:
+                        parsedData.append(newCourseRow)
+
+                    if len(newCourseRow) != 9:
+                        print("Course not added: {}\n\nMissing Data members on page  \n{}\n".format(newCourseRow, url))
+                    
+                    
 ##                    break
                     
                     # append class to data found
@@ -170,19 +184,46 @@ def parsedDataToDataFrame(parsedData):
     instructorUrl = []
     syllabusUrl = []
 
-    print("there are {} rows in my data".format(len(parsedData)))
-    for row in parsedData:
-        className.append(row[0])
-        season.append(row[1])
-        section.append(row[2])
-        classNumber.append(row[3])
-        meetingTime.append(row[4])
-        location.append(row[5])
-        instructor.append(row[6])
-        instructorUrl.append(row[7])
-        syllabusUrl.append(row[8])
+    print("there are {} elements in ".format(len(parsedData)))
+##    print("length of each field in course card")
+##    print("\n#className: {}\n#season:{}\n#section: {}\n#classNumber: {}\n#meetingTime: {}\n#location: {}\n#instructor: {}\n#instructorUrl: {}\n#syllabusUrl: {} ".format(len(parsedData[0]),
+##                                                                                                                                                                         len(parsedData[1]),
+##                                                                                                                                                                         len(parsedData[2]),
+##                                                                                                                                                                         len(parsedData[3]),
+##                                                                                                                                                                         len(parsedData[4]),
+##                                                                                                                                                                         len(parsedData[5]),
+##                                                                                                                                                                         len(parsedData[6]),
+##                                                                                                                                                                         len(parsedData[7]),
+##                                                                                                                                                                         len(parsedData[8]),))
 
-    print(instructorUrl)
+    for row in parsedData:
+
+        try:
+            className.append(row[0])
+            season.append(row[1])
+            section.append(row[2])
+            classNumber.append(row[3])
+            meetingTime.append(row[4])
+            location.append(row[5])
+            instructor.append(row[6])
+            instructorUrl.append(row[7])
+            syllabusUrl.append(row[8])
+        except IndexError as err:
+            print("index incorrect. row not added: {}\nError: {}\n".format(row,err))
+        
+        
+        
+
+    print("there are {} elements in ".format(len(className)))
+    print("there are {} elements in ".format(len(season)))
+    print("there are {} elements in ".format(len(section)))
+    print("there are {} elements in ".format(len(classNumber)))
+    print("there are {} elements in ".format(len(meetingTime)))
+    print("there are {} elements in ".format(len(location)))
+    print("there are {} elements in ".format(len(instructor)))
+    print("there are {} elements in ".format(len(instructorUrl)))
+    print("there are {} elements in ".format(len(syllabusUrl)))
+    
     parsedDataDataFrame = pd.DataFrame({'Class Name': className,
                                         'Season': season,
                                         'Section': section,
