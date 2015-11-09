@@ -91,19 +91,24 @@ def runParse():
                     # make row. append
                     newCourseRow = []
                     newCourseRow.append(thisSeason)
-                
+                    print(str(aClass))
                     for e in aClass:
-                        cleanE = newCourseRow.append(deWhiteSpaceElement(deDivElement(str(e))))
+                        cleanE = deWhiteSpaceElement(deDivElement(str(e)))
                         # print(type(e))
                         if "Section" in str(e):
+                            print(str(cleanE))
                             newCourseRow.append(cleanE)
+                            
                         if "Class number" in str(e):
+                            print(str(cleanE))
                             newCourseRow.append(cleanE)
                             
                         if "Meeting time" in str(e):
+                            print(str(cleanE))
                             newCourseRow.append(cleanE)
 
                         if "Location" in str(e):
+                            print(str(cleanE))
                             newCourseRow.append(cleanE)
 
                         if "Instructor" in str(e):
@@ -114,7 +119,7 @@ def runParse():
                             except AttributeError as err:
                                 #print("professor name not found: {}".format(err))
                                 profName = ""
-                            #print(profName)
+                            print(profName)
                             newCourseRow.append(profName)
 
                             try:
@@ -123,7 +128,7 @@ def runParse():
                                 #print("professor name not found: {}".format(err))
                                 profUrl = ""
                                 
-                            #print(profUrl)
+                            print(profUrl)
                             newCourseRow.append(profUrl)
                             
                             try:
@@ -132,14 +137,17 @@ def runParse():
                                 #print("professor name not found: {}".format(err))
                                 syllabusUrl = ""
                             
-                            #print(syllabusUrl)
+                            print(syllabusUrl)
                             newCourseRow.append(syllabusUrl)
-            
-                        #print(deWhiteSpaceElement(deDivElement(str(e))))
+                    print(newCourseRow)
+                    break
                     
                     # append class to data found
                     parsedData.append(newCourseRow)
+                break
+        break        
         file.close()
+
 
     return parsedData
 
