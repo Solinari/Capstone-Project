@@ -3,6 +3,9 @@
 # for pandas
 import pandas as pd
 
+# for mongo
+from pymongo import MongoClient
+
 # for parsing
 from bs4 import BeautifulSoup
 import urllib.request
