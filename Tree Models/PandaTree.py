@@ -21,7 +21,7 @@ def randomQuery(df, myClass, mySeason):
     out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
     #print(out)
     # if empty
-    if df.empty:
+    if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
 
     return out
