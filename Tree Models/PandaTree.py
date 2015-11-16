@@ -23,7 +23,7 @@ def randomQuery(df, myClass, mySeason):
     # if empty
     if df.empty:
         return "COURSE NOT FOUND, SEE ADVISOR"
-    
+
     return out
 
 
@@ -54,7 +54,7 @@ def majorAnimation(df):
 
     # general elective choices
     E = ['ANI', 'DC', 'GAM', 'GD', 'GPH', 'HCI', 'VFX']
-    
+
     # dictionaries are class names to panda queries
     # first year maps to fall winter spring
     fallYearOne = 'Fall 2012-2013'
@@ -100,7 +100,7 @@ def majorAnimation(df):
     springTwo = toMap(springTwo)
     courseTrack[springYearTwo] = springTwo
 
-    
+
 
     # query for course in season
     for season in list(courseTrack.keys()):
@@ -120,9 +120,267 @@ def majorAnimation(df):
             if course == 'FAE':
                 # TODO queries for focus area electives
                 courseTrack[season][course] = "SEE ADVISOR"
-            
+
 
     # works
     print(courseTrack)
-    
+
 majorAnimation(myDF)
+
+def majorProduction(df):
+    ''' defines production major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # Focus Area Electives. Need 7 of these
+    FAE = ['ANI', 'DC', 'VFX']
+
+    # Exclude these classes for FAE
+    Exclude = ['DC 401', 'DC 423', 'DC 476', 'DC 495',
+                'DC 565', 'DC 566', 'DC 567', 'DC 568']
+
+    # general elective choices
+    E = []
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['DC 409']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # major focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['DC 461','DC 420']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # major focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['DC 462','DC 475']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    # second year maps to fall winter with open electives later
+    # major elective is E
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['FAE','FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # major focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['FAE','FAE','FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # major focus areaelective is FAE
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['FAE','FAE']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'FAE':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorProduction(myDF)
+
+def majorPostProduction(df):
+    ''' defines post production major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # Focus Area Electives. Need 3 of these
+    FAE = ['ANI', 'DC', 'VFX']
+
+    # Exclude these classes for FAE
+    Exclude = ['DC 401', 'DC 423', 'DC 476', 'DC 495',
+                'DC 565', 'DC 566', 'DC 567', 'DC 568']
+
+    # general elective choices
+    E = []
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['DC 409']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # major focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['DC 461','DC 420']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # major focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['DC 462','DC 475']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    # second year maps to fall winter with open electives later
+    # major elective is E
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['DC 415','DC 422','FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # major focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['DC 425','FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # major focus areaelective is FAE
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['DC 440','FAE']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'FAE':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorPostProduction(myDF)
+
+def majorSound(df):
+    ''' defines sound major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # Focus Area Electives. Need 2 of these
+    FAE = ['ANI', 'DC', 'VFX']
+
+    # Exclude these classes for FAE
+    Exclude = ['DC 401', 'DC 423', 'DC 476', 'DC 495',
+                'DC 565', 'DC 566', 'DC 567', 'DC 568']
+
+    # general elective choices
+    E = []
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['DC 409']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # major focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['DC 461','DC 420']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # major focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['DC 415','DC 491']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    # second year maps to fall winter with open electives later
+    # major elective is E
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['DC 412','DC 419','FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # major focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['DC 417','FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # major focus areaelective is FAE
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['DC 413','DC 418']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'FAE':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorSound(myDF)
