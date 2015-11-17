@@ -39,7 +39,8 @@ def toMap(classes):
 
     return dict.fromkeys(classes, None)
 
-def majorAnimation(df):
+# Major: Animation; Concentration: Animator
+def majorAnimator(df):
     ''' defines animation major requirements'''
 
     # dict style is {season : {courseName: random panda query} }
@@ -125,7 +126,95 @@ def majorAnimation(df):
     # works
     print(courseTrack)
 
-majorAnimation(myDF)
+majorAnimator(myDF)
+
+# Major: Animation; Concentration: Technical Artist
+def majorTechnicalArtist(df):
+    ''' defines animation major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # Focus Area Electives
+    RFA = ['ANI 430', 'ANI 432', 'ANI 433', 'ANI 435', 'ANI 450']
+    AFA = ['ANI 450', 'ANI 451', 'ANI 430', 'ANI 431', 'ANI 432']
+    MFA = ['']
+
+    # Core requirements
+    C = ['ANI 423', 'ANI 446', 'ANI 452', 'ANI 453',
+         'ANI 444', 'GAM 690', 'GAM 691', 'ANI 440']
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['ANI 423','ANI 460','ANI 421']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # animation focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['ANI 425','ANI 422','FAE']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # 466 can be 444
+    # animation focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['ANI 440','ANI 466','FAE']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    # second year maps to fall winter with open electives later
+    # animation elective is E
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['ANI 540','FAE','E']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # animation focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['ANI 541','FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # 466 can be 444
+    # animation focus areaelective is FAE
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['FAE','FAE','FAE']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'FAE':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorTechnicalArtist(myDF)
 
 def majorProduction(df):
     ''' defines production major requirements'''
