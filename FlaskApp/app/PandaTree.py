@@ -124,7 +124,7 @@ def majorAnimator(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorAnimator(myDF)
 

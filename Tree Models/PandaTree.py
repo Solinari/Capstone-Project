@@ -109,9 +109,9 @@ def majorAnimator(df):
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -124,9 +124,9 @@ def majorAnimator(df):
 
 
     # works
-    print(courseTrack)
+    print(str(courseTrack))
 
-#majorAnimator(myDF)
+majorAnimator(myDF)
 
 # Major: Animation; Concentration: Technical Artist
 def majorTechnicalArtist(df):
@@ -321,7 +321,7 @@ def majorBusinessIT(df):
     # works
     print(courseTrack)
 
-majorBusinessIT(myDF)
+#majorBusinessIT(myDF)
 
 def majorProduction(df):
     ''' defines production major requirements'''

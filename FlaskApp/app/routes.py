@@ -61,8 +61,8 @@ def form(tree=None):
                 #what you want to do when button E is pressed
             pass
 
-    elif request.method == "GET":
-        return "it's a get!"
+    
+    return render_template("form.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
