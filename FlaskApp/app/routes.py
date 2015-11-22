@@ -31,7 +31,9 @@ def home():
 def about():
   return render_template('about.html')
 
-
+def test(var):
+    '''print var!'''
+    return "You pushed: {}!".format(var)
 
 @app.route("/form", methods = ["GET", "POST"])
 def form():
@@ -46,6 +48,10 @@ def form():
             tree = PandaTree.majorAnimator()
             form = TreeForm(request.form, tree)
             return render_template("form.html",form=form)
+
+
+            out = test("A")
+            return render_template("register.html", form=form, out=out)
 
         elif button == 'B':
                 #what you want to do when button B is pressed
