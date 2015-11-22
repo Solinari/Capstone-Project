@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
+from PandaTree import *
+# Why this works: https://docs.python.org/2/tutorial/modules.html
 
 class RegistrationForm(Form):
     username = TextField('Username', [validators.Length(min=4, max=25)])
@@ -9,7 +11,15 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
-    accept_tos = BooleanField('I accept the TOS', [validators.Required()])  
+    accept_tos = BooleanField('I accept the TOS', [validators.Required()]) 
+
+class TreeForm(Form, inTree):
+    '''represent the output of a tree to be rendered'''
+    # maybe im misisng something with this.
+    # the idea is to set the result of the tree to a field here
+    # and then render it as a form
+    tree = inTree
+
   
 app = Flask(__name__)
   
@@ -25,13 +35,18 @@ def about():
 
 @app.route("/form", methods = ["GET", "POST"])
 def form():
-    if request.method == "POST":
 
-        button = request.form['choice1'] #this retrieves which radio button was pressed
+    button = request.form.get('choice1', None) #this retrieves which radio button was pressed
 
-        if button == 'A': #if the button with attribute value = "A' is pressed
+    if request.method == "POST":       
+
+        if button == 'Animator': #if the button with attribute value = "A' is pressed
+
                 #what you want to do when button A is pressed
-            pass
+            tree = PandaTree.majorAnimator()
+            form = TreeForm(request.form, tree)
+            return render_template("form.html",form=form)
+
         elif button == 'B':
                 #what you want to do when button B is pressed
             pass
@@ -44,7 +59,9 @@ def form():
         elif button == 'E':
                 #what you want to do when button E is pressed
             pass
-    return render_template("form.html")
+
+    elif request.method == "GET":
+        return render_template("form.html", button=button)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
