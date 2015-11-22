@@ -1011,3 +1011,136 @@ def majorComputerScience(df):
     print(courseTrack)
 
 majorComputerScience(myDF)
+
+# Major: Computer, Information and Network Security
+# Concentration: Computer Security
+def majorComputerSecurity(df):
+    ''' defines Computer Security major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 400, all quarters, none
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC401
+    #CSC 403, all quarters, CSC402
+    #CSC 406, all quarters, CSC401
+    #CSC 407, all quarters, CSC406 and CSC402
+    
+    #foundation courses
+    # CSC 435, all quarters, CSC 403 and CSC 407
+    # SE 450, all quarters, CSC 403
+    # TDC 477
+    # CNS 440
+    # CNS 450
+
+    # Advanced Courses
+    # CSC 439
+
+    # complete 2 of the 4
+    # CSC 440
+    # SE 525
+    # SE 526
+    # TDC 577
+
+    # complete 1 of the following (not counting courses taken to satisfy
+    # requirements above)
+    # CNS 477
+    # CSC 440
+    # SE 482
+    # SE 525
+    # SE 526
+    # SE 529
+    # CSC 536
+    # CSC 557
+    # TDC 577
+
+    #Major Elective Courses
+    # Complete 1 CINS course 421+ OR a course from list
+    E = ['ACC 500', 'ACC 541', 'ACC 547', 'CSC 439', 'CSC 440', 'CSC 536',
+         'CSC 557', 'ECT 582', 'IS 421', 'IS 444', 'IS 505', 'IS 506', 'SE 430',
+         'SE 482', 'SE 525', 'SE 526', 'SE 529', 'TDC 468', 'TDC 511', 'TDC 560',
+         'TDC 562', 'TDC 563', 'TDC 567', 'TDC 568', 'TDC 577']
+
+    # 2 open electives in the range 421-699
+    OE = [ 'CSC', 'CNS', 'TDC', 'SE', 'IS', 'ECT',
+           'IT', 'PM', 'IPD', 'HIT', 'HCI', 'GAM']
+    
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['CSC 403', 'CSC 407', 'FAE']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['CSC 421', 'CSC 435', 'CSC 447']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['CSC 453', 'SE 450', 'FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['FAE', 'FAE', 'FAE']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+    fallYearThree = 'Fall 2014-2015'
+    fallThree =  ['FAE']
+    fallThree = toMap(fallThree)
+    courseTrack[fallYearThree] = fallThree
+    # works
+    #print(fallThree)
+
+    winterYearThree = 'Winter 2015-2016'
+    winterThree =  ['', '', '']
+    winterThree = toMap(winterThree)
+    courseTrack[winterYearThree] = winterThree
+
+    springYearThree = 'Spring 2015-2016'
+    springThree =  ['', '', '']
+    springThree = toMap(springThree)
+    courseTrack[springYearThree] = springThree
+                
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'FAE':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorComputerSecurity(myDF)
