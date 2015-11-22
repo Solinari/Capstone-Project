@@ -12,14 +12,6 @@ class RegistrationForm(Form):
     ])
     confirm = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the TOS', [validators.Required()]) 
-
-class TreeForm(Form, inTree):
-    '''represent the output of a tree to be rendered'''
-    # maybe im misisng something with this.
-    # the idea is to set the result of the tree to a field here
-    # and then render it as a form
-    tree = inTree
-
   
 app = Flask(__name__)
   
@@ -36,22 +28,20 @@ def test(var):
     return "You pushed: {}!".format(var)
 
 @app.route("/form", methods = ["GET", "POST"])
-def form():
+def form(tree=None):
 
     button = request.form.get('choice1', None) #this retrieves which radio button was pressed
 
-    if request.method == "POST":       
+    if request.method == "POST":
+
+        
 
         if button == 'Animator': #if the button with attribute value = "A' is pressed
 
                 #what you want to do when button A is pressed
             tree = PandaTree.majorAnimator()
-            form = TreeForm(request.form, tree)
-            return render_template("form.html",form=form)
-
-
-            out = test("A")
-            return render_template("register.html", form=form, out=out)
+            print(tree)
+            return render_template("form.html",tree=tree)
 
         elif button == 'B':
                 #what you want to do when button B is pressed

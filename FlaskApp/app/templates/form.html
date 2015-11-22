@@ -22,19 +22,19 @@
                 </div>
 
                 <!---Render stuff here-->
-                {% from "_formhelpers.html" import render_field %}
+                {% if tree %}
                 <form method=post action="/form">
 
                     <table>
                         
                         <tr>
-                            <td>{{ render_field(form.tree) }}</td>
+                            <td>{{ tree }}</td>
                         </tr>
 
                     </table>
      
                 </form>
-
+                {% endif %}
                 <script type="text/jscript">
                     $("body").find("#radios1").children().each(function () {
                         $(this).bind('click', function () {
