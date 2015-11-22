@@ -764,7 +764,7 @@ def majorComputerGameDev(df):
 ##
 ##    winterYearThree = 'Winter 2015-2016'
 ##    winterThree =  ['GAM 575', 'Cap']
-##    winterThreee = toMap(winterThree)
+##    winterThree = toMap(winterThree)
 ##    courseTrack[winterYearThree] = winterThree
 ##
 ##    springYearThree = 'Spring 2015-2016'
@@ -904,57 +904,87 @@ def majorComputerScience(df):
           'GPH 436', 'GPH 469', 'GPH 570', 'GPH 572', ]
 
     # dictionaries are class names to panda queries
+##    fallYearOne = 'Fall 2012-2013'
+##    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
+##    fallOne = toMap(fallOne)
+##    courseTrack[fallYearOne] = fallOne
+##    # works
+##    #print(fallOne)
+##
+##    winterYearOne = 'Winter 2013-2014'
+##    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
+##    winterOne = toMap(winterOne)
+##    courseTrack[winterYearOne] = winterOne
+##
+##    springYearOne = 'Spring 2013-2014'
+##    springOne =  ['CSC 403', 'CSC 407', 'FAE']
+##    springOne = toMap(springOne)
+##    courseTrack[springYearOne] = springOne
+##
+##    fallYearTwo = 'Fall 2013-2014'
+##    fallTwo =  ['CSC 421', 'CSC 435', 'CSC 447']
+##    fallTwo = toMap(fallTwo)
+##    courseTrack[fallYearTwo] = fallTwo
+##
+##    # works
+##    #print(fallTwo)
+##
+##    winterYearTwo = 'Winter 2014-2015'
+##    winterTwo =  ['CSC 453', 'SE 450', 'FAE']
+##    winterTwo = toMap(winterTwo)
+##    courseTrack[winterYearTwo] = winterTwo
+##
+##    springYearTwo = 'Spring 2014-2015'
+##    springTwo =  ['FAE', 'FAE', 'FAE']
+##    springTwo = toMap(springTwo)
+##    courseTrack[springYearTwo] = springTwo
+##
+##    fallYearThree = 'Fall 2014-2015'
+##    fallThree =  ['FAE']
+##    fallThree = toMap(fallThree)
+##    courseTrack[fallYearThree] = fallThree
+##    # works
+##    #print(fallThree)
+##
+##    winterYearThree = 'Winter 2015-2016'
+##    winterThree =  ['', '', '']
+##    winterThree = toMap(winterThree)
+##    courseTrack[winterYearThree] = winterThree
+##
+##    springYearThree = 'Spring 2015-2016'
+##    springThree =  ['', '', '']
+##    springThree = toMap(springThree)
+##    courseTrack[springYearThree] = springThree
+
     fallYearOne = 'Fall 2012-2013'
-    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
+    fallOne =  ['CSC 421', 'FAE', 'FAE']
     fallOne = toMap(fallOne)
     courseTrack[fallYearOne] = fallOne
-    # works
-    #print(fallOne)
-
-    winterYearOne = 'Winter 2013-2014'
-    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
-    winterOne = toMap(winterOne)
-    courseTrack[winterYearOne] = winterOne
-
-    springYearOne = 'Spring 2013-2014'
-    springOne =  ['CSC 403', 'CSC 407', 'FAE']
-    springOne = toMap(springOne)
-    courseTrack[springYearOne] = springOne
-
-    fallYearTwo = 'Fall 2013-2014'
-    fallTwo =  ['', '', '']
-    fallTwo = toMap(fallTwo)
-    courseTrack[fallYearTwo] = fallTwo
 
     # works
     #print(fallTwo)
 
-    winterYearTwo = 'Winter 2014-2015'
-    winterTwo =  ['', '', '']
-    winterTwo = toMap(winterTwo)
-    courseTrack[winterYearTwo] = winterTwo
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 453', 'FAE', 'FAE']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
 
-    springYearTwo = 'Spring 2014-2015'
-    springTwo =  ['', '', '']
-    springTwo = toMap(springTwo)
-    courseTrack[springYearTwo] = springTwo
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['CSC 447', 'FAE', 'FAE']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
 
-    fallYearThree = 'Fall 2014-2015'
-    fallThree =  ['', '', '']
-    fallThree = toMap(fallThree)
-    courseTrack[fallYearThree] = fallThree
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['SE 450', 'FAE', 'FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
     # works
     #print(fallThree)
 
-    winterYearThree = 'Winter 2015-2016'
-    winterThree =  ['', '', '']
-    winterThreee = toMap(winterThree)
-    courseTrack[winterYearThree] = winterThree
-
-    springYearThree = 'Spring 2015-2016'
-    springThree =  ['', '', '']
-    springThree = toMap(springThree)
-    courseTrack[springYearThree] = springThree
+    winterYearTwo = 'Winter 2014-20155'
+    winterTwo =  ['CSC 435']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
 
                 
     # query for course in season
