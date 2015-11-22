@@ -136,9 +136,9 @@ def majorAnimator():
 #majorAnimator(myDF)
 
 # Major: Animation; Concentration: Technical Artist
-def majorTechnicalArtist(df):
+def majorTechnicalArtist():
     ''' defines animation major requirements'''
-
+	df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -235,7 +235,7 @@ def majorTechnicalArtist(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorTechnicalArtist(myDF)
 

@@ -51,9 +51,11 @@ def form(tree=None):
             
             return render_template("form.html",tree=tree)
 
-        elif button == 'B':
+        elif button == 'TechArtist':
                 #what you want to do when button B is pressed
-            pass
+            tree = majorTechnicalArtist()
+			return render_template("form.html",tree=tree)
+			
         elif button == 'C':
                 #what you want to do when button C is pressed
             pass
