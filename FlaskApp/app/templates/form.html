@@ -5,7 +5,7 @@
     <div class="span4 offset4">
         <div class="well">
             <legend>Click me!</legend>
-            <form method="POST" action="" accept-charset="UTF-8">
+            <form method="POST" action="/form" accept-charset="UTF-8">
                 {% if error %}
                     <div class="alert alert-error">
                         <a class="close" data-dismiss="alert" href="#">x</a>{{ error }}
@@ -23,17 +23,13 @@
 
                 <!---Render stuff here-->
                 {% if tree %}
-                <form method=:"POST" action="/form">
-
-                    <table>
+                <table>
                         
-                        <tr>
-                            <td>{{ tree }}</td>
-                        </tr>
+                    <tr>
+                        <td>{{ tree }}</td>
+                    </tr>
 
-                    </table>
-     
-                </form>
+                </table>   
                 {% endif %}
 
                 <script type="text/jscript">

@@ -30,7 +30,7 @@ def test(var):
 @app.route("/form", methods = ["GET", "POST"])
 def form(tree=None):
 
-
+    print(request)
     if request.method == "POST":
 
 
@@ -62,7 +62,7 @@ def form(tree=None):
             pass
 
     
-    return render_template("form.html")
+        return render_template("form.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
