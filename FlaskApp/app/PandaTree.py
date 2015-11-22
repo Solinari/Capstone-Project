@@ -27,8 +27,14 @@ def randomQuery(df, myClass, mySeason):
     return out
 
 
-# test open
+# one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
+
+def returnDataFrame():
+    '''returns global view of dataframe'''
+
+    global myDF
+    return myDF
 
 #randomQuery(myDF, 'ANI 423', 'Fall 2012-2013')
 
@@ -43,7 +49,7 @@ def toMap(classes):
 def majorAnimator():
     ''' defines animation major requirements'''
 
-    df = OpenCSV2DF('Catalog.csv')
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -106,7 +112,7 @@ def majorAnimator():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
