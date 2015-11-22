@@ -35,17 +35,17 @@ def form(tree=None):
 
 
         button = request.form['choice1'] #this retrieves which radio button was pressed
-        print("$$$$$$$$$$$$$$$$$$$$$$")
+        print("\n\nBUTTONBUTTONBUTTON")
         print(button)
-        print("$$$$$$$$$$$$$$$$$$$$$$")
+        print("BUTTONBUTTONBUTTON")
 
         if button == 'Animator': #if the button with attribute value = "A' is pressed
 
                 #what you want to do when button A is pressed
             tree = PandaTree.majorAnimator()
-            print("$$$$$$$$$$$$$$$$$$$$$$")
+            print("TREETREETREE")
             print(tree)
-            print("$$$$$$$$$$$$$$$$$$$$$$")
+            print("$TREETREETREE")
             return render_template("form.html",tree=tree)
 
         elif button == 'B':
