@@ -233,16 +233,17 @@ def majorTechnicalArtist():
                 # TODO queries for focus area electives
                 courseTrack[season][course] = "SEE ADVISOR"
 
-
+ 
     # works
     return str(courseTrack)
 
 #majorTechnicalArtist(myDF)
 
 # Major: Business Information Technology
-def majorBusinessIT(df):
+def majorBusinessIT():
     ''' defines animation major requirements'''
 
+	df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -326,13 +327,13 @@ def majorBusinessIT(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorBusinessIT(myDF)
 
-def majorProduction(df):
+def majorProduction():
     ''' defines production major requirements'''
-
+	df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -412,13 +413,13 @@ def majorProduction(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorProduction(myDF)
 
-def majorPostProduction(df):
+def majorPostProduction():
     ''' defines post production major requirements'''
-
+	df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -498,13 +499,13 @@ def majorPostProduction(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorPostProduction(myDF)
 
-def majorSound(df):
+def majorSound():
     ''' defines sound major requirements'''
-
+	df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -584,6 +585,6 @@ def majorSound(df):
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 #majorSound(myDF)
