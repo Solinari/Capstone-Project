@@ -109,9 +109,9 @@ def majorAnimator(df):
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                #print(course)
+                print(course)
                 out = randomQuery(df, course, season)
-                #print(out)
+                print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -124,9 +124,9 @@ def majorAnimator(df):
 
 
     # works
-    print(str(courseTrack))
+    print(courseTrack)
 
-majorAnimator(myDF)
+#majorAnimator(myDF)
 
 # Major: Animation; Concentration: Technical Artist
 def majorTechnicalArtist(df):
@@ -321,7 +321,7 @@ def majorBusinessIT(df):
     # works
     print(courseTrack)
 
-#majorBusinessIT(myDF)
+majorBusinessIT(myDF)
 
 def majorProduction(df):
     ''' defines production major requirements'''
@@ -877,27 +877,52 @@ def majorComputerScience(df):
     # 4 courses from one area
     # 4 courses from any area
     FAE = ['SSD', 'T', 'DS', 'DBS', 'AI', 'SoEn', 'MM']
+    SSD = ['CSC 436', 'CSC 438', 'CSC 439', 'CSC 443', 'CSC 448',
+           'CSC 461', 'CSC 462', 'CSC 471', 'CSC 472', 'CSC 475',
+           'CSC 548', 'CSC 549', 'CSC 551', 'CSC 553', 'CSC 536',
+           'CSC 540', 'CSC 534', 'CSC 552', 'HCI 441', 'SE 560',
+           'SE 452', 'SE 459', 'SE 525', 'SE 526', 'SE 554',
+           'CNS 450', 'SE 491', 'SE 591', 'GAM 690', 'GAM 691',
+           'TDC 478', 'TDC 484', 'TDC 568']
+    T = ['CSC 431', 'CSC 440', 'CSC 444', 'CSC 489', 'CSC 503',
+         'CSC 521', 'CSC 525', 'CSC 531', 'CSCS 535', 'CSC 557',
+         'CSC 547', 'CSC 580', 'CSC 591', 'SE 533']
+    DS = ['CSC 423', 'CSC 424', 'CSC 425', 'CSC 428', 'CSC 433',
+          'CSCS 465', 'CSC 478', 'CSC 481', 'CSC 482', 'CSC 495',
+          'CSC 529', 'CSC 555', 'CSC 575', 'CSC 578', 'ECT 584', 'IS 467']
+    DBS = ['CSC 433', 'CSC 452', 'CSC 454', 'CSC 478', 'CSC 529', 'CSC 543',
+           'CSC 549', 'CSC 551', 'CSC 553', 'CSC 554', 'CSC 555', 'CSC 575', 'CSC 589']
+    AI = ['CSC 457', 'CSC 458', 'CSC 478', 'CSC 480', 'CSC 583', 'CSC 495',
+          'CSC 575', 'CSC 528', 'CSC 578', 'CSC 582', 'CSC 587', 'CSC 594',
+          'CSC 481', 'CSC 538', 'CSC 482', 'CSC 529', 'CSC 576', 'CSC 592',
+          'ECT 584', 'GEO 441', 'GEO 442', 'IS 467']
+    SoEn = ['SE 430', 'SE 433', 'SE 453', 'SE 459', 'SE 457', 'SE 475',
+            'SE 477', 'SE 480', 'SE 482', 'SE 525', 'SE 526', 'SE 533',
+            'SE 529', 'SE 546', 'SE 549', 'SE 579', 'SE 581', 'SE 582']
+    MM = ['GAM 450', 'CSC 461', 'GAM 453', 'GAM 474', 'GAM 475', 'GAM 476',
+          'GAM 477', 'GAM 486', 'GAM 490', 'GAM 575', 'GAM 690', 'GAM 691',
+          'GPH 436', 'GPH 469', 'GPH 570', 'GPH 572', ]
 
     # dictionaries are class names to panda queries
     fallYearOne = 'Fall 2012-2013'
-    fallOne =  ['CSC 400', 'CSC 401', 'E']
+    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
     fallOne = toMap(fallOne)
     courseTrack[fallYearOne] = fallOne
     # works
     #print(fallOne)
 
     winterYearOne = 'Winter 2013-2014'
-    winterOne =  ['CSC 402', 'CSC 406', 'E']
+    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
     winterOne = toMap(winterOne)
     courseTrack[winterYearOne] = winterOne
 
     springYearOne = 'Spring 2013-2014'
-    springOne =  ['CSC 403', 'CSC 407', 'E']
+    springOne =  ['CSC 403', 'CSC 407', 'FAE']
     springOne = toMap(springOne)
     courseTrack[springYearOne] = springOne
 
     fallYearTwo = 'Fall 2013-2014'
-    fallTwo =  ['GAM 425', 'CSC 461']
+    fallTwo =  ['', '', '']
     fallTwo = toMap(fallTwo)
     courseTrack[fallYearTwo] = fallTwo
 
@@ -905,29 +930,29 @@ def majorComputerScience(df):
     #print(fallTwo)
 
     winterYearTwo = 'Winter 2014-2015'
-    winterTwo =  ['SE 456', 'GPH 469']
+    winterTwo =  ['', '', '']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
 
     springYearTwo = 'Spring 2014-2015'
-    springTwo =  ['GAM 490']
+    springTwo =  ['', '', '']
     springTwo = toMap(springTwo)
     courseTrack[springYearTwo] = springTwo
 
     fallYearThree = 'Fall 2014-2015'
-    fallThree =  ['GAM 475', 'GAM 450']
+    fallThree =  ['', '', '']
     fallThree = toMap(fallThree)
     courseTrack[fallYearThree] = fallThree
     # works
     #print(fallThree)
 
     winterYearThree = 'Winter 2015-2016'
-    winterThree =  ['GAM 575', 'Cap']
+    winterThree =  ['', '', '']
     winterThreee = toMap(winterThree)
     courseTrack[winterYearThree] = winterThree
 
     springYearThree = 'Spring 2015-2016'
-    springThree =  ['Cap']
+    springThree =  ['', '', '']
     springThree = toMap(springThree)
     courseTrack[springYearThree] = springThree
 
@@ -937,7 +962,7 @@ def majorComputerScience(df):
         print(season)
         for course in list(courseTrack[season].keys()):
 
-            if course != 'E' and course != 'Cap':
+            if course != 'E' and course != 'FAE':
                 print(course)
                 out = randomQuery(df, course, season)
                 print(out)
@@ -947,7 +972,7 @@ def majorComputerScience(df):
                 # TODO query for electives
                 courseTrack[season][course] = "SEE ADVISOR"
 
-            if course == 'Cap':
+            if course == 'FAE':
                 # TODO queries for focus area electives
                 courseTrack[season][course] = "SEE ADVISOR"
 
