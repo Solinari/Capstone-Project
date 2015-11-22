@@ -23,7 +23,7 @@
 
                 <!---Render stuff here-->
                 {% if tree %}
-                <form method=post action="/form">
+                <form method="POST" action="/form">
 
                     <table>
                         
@@ -35,6 +35,7 @@
      
                 </form>
                 {% endif %}
+
                 <script type="text/jscript">
                     $("body").find("#radios1").children().each(function () {
                         $(this).bind('click', function () {
