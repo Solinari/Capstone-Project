@@ -130,7 +130,7 @@ majorAnimator(myDF)
 
 # Major: Animation; Concentration: Technical Artist
 def majorTechnicalArtist(df):
-    ''' defines animation major requirements'''
+    ''' defines technical artist major requirements'''
 
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
@@ -179,7 +179,7 @@ def majorTechnicalArtist(df):
 
     # technical animator focus area elective is FAE
     springYearOne = 'Spring 2013-2014'
-    springOne =  ['ANI 446', 'GAM 691']
+    springOne =  ['ANI 446', 'GAM 691', 'ANI 444']
     springOne = toMap(springOne)
     courseTrack[springYearOne] = springOne
 
@@ -195,13 +195,13 @@ def majorTechnicalArtist(df):
 
     # technical animator focus area elective is FAE
     winterYearTwo = 'Winter 2014-2015'
-    winterTwo =  ['GE']
+    winterTwo =  ['ANI 453', 'ANI 440', 'GE']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
 
     # technical animator focus areaelective is FAE
     springYearTwo = 'Spring 2014-2015'
-    springTwo =  ['ANI 444']
+    springTwo =  []
     springTwo = toMap(springTwo)
     courseTrack[springYearTwo] = springTwo
 
@@ -234,7 +234,7 @@ def majorTechnicalArtist(df):
 
 # Major: Business Information Technology
 def majorBusinessIT(df):
-    ''' defines animation major requirements'''
+    ''' defines Business Information Technology major requirements'''
 
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
@@ -580,3 +580,379 @@ def majorSound(df):
     print(courseTrack)
 
 #majorSound(myDF)
+
+# Major: Computational Finance
+def majorComputationalFinance(df):
+    ''' defines Computational Finance major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 401, all quarters, none
+    #CSC 404, all quarters, none
+    #IT 403, all quarters, none
+    #CSC 412, Fall/Winter, none
+    
+    #CDM foundation courses
+    # CSC 423, all quarters, IT 403
+    # CSC 425, Fall/Winter, CSC423 or MAT 456
+    # CSC 431, Winter, CSC402 and 2 course calculus sequence
+    # CSC 485, no information, MAT 220
+    # NOTE: Students can take either CSC 431 or CSC 485
+    # CSC 521, Spring, (CSC402 or CSC404) and CSC 423
+
+    # Kellstadt Foundation Courses
+    # ACC 500, all quarters, none
+    # ECO 555, all quarters, GSB 420
+    # FIN 555; all quarters; ACC 500, ECO 555, and GSB 420
+    # FIN 523, all quarters, FIN 555 and GSB 420
+    # FIN 525, all quarters, FIN 523
+    # FIN 562, all quarters, FIN 555 and GSB 420
+    # FIN 662; all quarters; FIN 523, FIN 555, and (GSB 400 or GSB 420)
+
+    #Advanced courses, one of the three
+    # CSC 695, all quarters, all foundation courses (CDM and Kellstadt)
+    # CSC 697, all quarters, none
+    # CSC 599, Spring, CSC 404 and (CSC 431 or CSC 521 or CSC 425)
+    AC = ['CSC 695', 'CSC 697', 'CSC 599']
+
+    #Major Elective - 1 500 lvl course at CDM, Kellstadt, or Department of math
+    E = ['E']
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['ACC 500', 'ECO 555', 'IT 403']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 423', 'CSC 401', 'CSC 404']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['FIN 555', 'CSC 521', 'E']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['CSC 425', 'CSC 412', 'FIN 523']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['CSC 431', 'FIN 525', 'FIN 562']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['FIN 562', 'AC']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'AC':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'AC':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorComputationalFinance(myDF)
+
+# Major: Computer Game Development
+def majorComputerGameDev(df):
+    ''' defines Computer Game Development major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 400, all quarters, none
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC401
+    #CSC 403, all quarters, CSC402
+    #CSC 406, all quarters, CSC401
+    #CSC 407, all quarters, CSC406 and CSC402
+    
+    #foundation courses
+    # GAM 425, Fall, CSC 461 and CSC 403
+    # CSC 461; Fall; CSC 400, CSC 403, CSC 407
+    # SE 456, Winter, CSC 403
+    # GPH 469; Winter; CSC 461 and GAM 425
+
+    # Advanced Courses
+    # GAM 490; Spring; CSC 461, CSC 407, (SE 456 or SE 450)
+    # GAM 475, Fall, GPH 469 and (SE 456 or SE 450)
+    # GAM 575, Winter, GAM 475
+    # *GAM 476; Winter; CSC 461, GAM 424, (SE 456 or SE 450)
+    # *GAM 450, Fall, GAM 425 and (SE 456 or SE 450)
+    # *NOTE: students can take either GAM 476 or GAM 450
+
+    #Major Elective - take 3 GAM courses 421-699
+    E = ['GAM']
+
+    #Capstone - take either 690 and 691 OR just 695
+    #GAM 690, winter, GAM 475
+    #GAM 691, spring, GAM 474 or SE 456
+    #GAM 695, all quarters, GAM 575 and consent of teacher
+    Cap = ['GAM 690', 'GAM 691', 'GAM 695']
+
+##    # dictionaries are class names to panda queries
+##    fallYearOne = 'Fall 2012-2013'
+##    fallOne =  ['CSC 400', 'CSC 401', 'E']
+##    fallOne = toMap(fallOne)
+##    courseTrack[fallYearOne] = fallOne
+##    # works
+##    #print(fallOne)
+##
+##    winterYearOne = 'Winter 2013-2014'
+##    winterOne =  ['CSC 402', 'CSC 406', 'E']
+##    winterOne = toMap(winterOne)
+##    courseTrack[winterYearOne] = winterOne
+##
+##    springYearOne = 'Spring 2013-2014'
+##    springOne =  ['CSC 403', 'CSC 407', 'E']
+##    springOne = toMap(springOne)
+##    courseTrack[springYearOne] = springOne
+##
+##    fallYearTwo = 'Fall 2013-2014'
+##    fallTwo =  ['GAM 425', 'CSC 461']
+##    fallTwo = toMap(fallTwo)
+##    courseTrack[fallYearTwo] = fallTwo
+##
+##    # works
+##    #print(fallTwo)
+##
+##    winterYearTwo = 'Winter 2014-2015'
+##    winterTwo =  ['SE 456', 'GPH 469']
+##    winterTwo = toMap(winterTwo)
+##    courseTrack[winterYearTwo] = winterTwo
+##
+##    springYearTwo = 'Spring 2014-2015'
+##    springTwo =  ['GAM 490']
+##    springTwo = toMap(springTwo)
+##    courseTrack[springYearTwo] = springTwo
+
+##    fallYearThree = 'Fall 2014-2015'
+##    fallThree =  ['GAM 475', 'GAM 450']
+##    fallThree = toMap(fallThree)
+##    courseTrack[fallYearThree] = fallThree
+##    # works
+##    #print(fallThree)
+##
+##    winterYearThree = 'Winter 2015-2016'
+##    winterThree =  ['GAM 575', 'Cap']
+##    winterThreee = toMap(winterThree)
+##    courseTrack[winterYearThree] = winterThree
+##
+##    springYearThree = 'Spring 2015-2016'
+##    springThree =  ['Cap']
+##    springThree = toMap(springThree)
+##    courseTrack[springYearThree] = springThree
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['GAM 425', 'CSC 461', 'E']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['SE 456', 'GPH 469', 'E']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['GAM 490', 'E']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['GAM 475', 'GAM 450']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    #Note: if 'Cap' is taken (GAM 695) then GAM 690 will be dropped
+    #along with GAM 691. The latter means the student won't be enrolled
+    #in school in spring
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['GAM 575', 'GAM 690', 'Cap']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['GAM 691']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+    #foundation courses
+
+    # Advanced Courses
+    # GAM 475, Fall, GPH 469 and (SE 456 or SE 450)
+    # GAM 575, Winter, GAM 475
+    # *GAM 476; Winter; CSC 461, GAM 424, (SE 456 or SE 450)
+    # *GAM 450, Fall, GAM 425 and (SE 456 or SE 450)
+    # *NOTE: students can take either GAM 476 or GAM 450
+
+    #Capstone - take either 690 and 691 OR just 695
+    #GAM 690, winter, GAM 475
+    #GAM 691, spring, GAM 474 or SE 456
+    #GAM 695, all quarters, GAM 575 and consent of teacher
+    
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'Cap':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'Cap':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorComputerGameDev(myDF)
+
+# Major: Computer Science
+def majorComputerScience(df):
+    ''' defines Computer Science major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 400, all quarters, none
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC401
+    #CSC 403, all quarters, CSC402
+    #CSC 406, all quarters, CSC401
+    #CSC 407, all quarters, CSC406 and CSC402
+    
+    #foundation courses
+    # CSC 421, all quarters, CSC 400 and CSC 403
+    # CSC 435, all quarters, CSC 403 and CSC 407
+    # CSC 447, all quarters, CSC 403 and CSC 406
+    # CSC 453, all quarters, CSC 403
+    # SE 450, all quarters, CSC 403
+
+    # Major Elective Courses
+    # 4 courses from one area
+    # 4 courses from any area
+    FAE = ['SSD', 'T', 'DS', 'DBS', 'AI', 'SoEn', 'MM']
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['CSC 400', 'CSC 401', 'E']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 402', 'CSC 406', 'E']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['CSC 403', 'CSC 407', 'E']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['GAM 425', 'CSC 461']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['SE 456', 'GPH 469']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    springYearTwo = 'Spring 2014-2015'
+    springTwo =  ['GAM 490']
+    springTwo = toMap(springTwo)
+    courseTrack[springYearTwo] = springTwo
+
+    fallYearThree = 'Fall 2014-2015'
+    fallThree =  ['GAM 475', 'GAM 450']
+    fallThree = toMap(fallThree)
+    courseTrack[fallYearThree] = fallThree
+    # works
+    #print(fallThree)
+
+    winterYearThree = 'Winter 2015-2016'
+    winterThree =  ['GAM 575', 'Cap']
+    winterThreee = toMap(winterThree)
+    courseTrack[winterYearThree] = winterThree
+
+    springYearThree = 'Spring 2015-2016'
+    springThree =  ['Cap']
+    springThree = toMap(springThree)
+    courseTrack[springYearThree] = springThree
+
+                
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'Cap':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'Cap':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorComputerScience(myDF)
