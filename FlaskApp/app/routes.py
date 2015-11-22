@@ -30,7 +30,7 @@ def test(var):
 @app.route("/form", methods = ["GET", "POST"])
 def form(tree=None):
 
-    print(request)
+
     if request.method == "POST":
 
 
@@ -42,7 +42,7 @@ def form(tree=None):
         if button == 'Animator': #if the button with attribute value = "A' is pressed
 
                 #what you want to do when button A is pressed
-            tree = PandaTree.majorAnimator()
+            tree = majorAnimator()
             print("TREETREETREE")
             print(tree)
             print("$TREETREETREE")
@@ -62,7 +62,7 @@ def form(tree=None):
             pass
 
     
-        return render_template("form.html")
+    return render_template("form.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

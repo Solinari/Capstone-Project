@@ -40,9 +40,10 @@ def toMap(classes):
     return dict.fromkeys(classes, None)
 
 # Major: Animation; Concentration: Animator
-def majorAnimator(df):
+def majorAnimator():
     ''' defines animation major requirements'''
 
+    df = OpenCSV2DF('Catalog.csv')
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
