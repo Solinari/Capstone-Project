@@ -18,22 +18,9 @@ def OpenCSV2DF(file):
 def randomQuery(df, myClass, mySeason):
     ''' Test querying from class and season with .sample()'''
     #this returns a dataframe cast to a string
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     pd.set_option('expand_frame_repr', False)
     out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
     #print(out)
-=======
->>>>>>> Stashed changes
-    out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample())
-    print("Out is: " + out)
-    print(out)
-    print("END OUT")
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
     # if empty
     if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
