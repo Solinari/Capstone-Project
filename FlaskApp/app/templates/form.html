@@ -26,9 +26,10 @@
                 <!---Render stuff here-->
                 {% if tree %}
                 <table>
-                    { % for season in tree.keys() %}
+                    { % for key, value in tree.iteritems() %}
                     <tr>
-                        <td>{{ tree[season] }}</td>
+                        {{ key }}
+                        <td>{{ value }}</td>
                     </tr>
                     {% endfor %}
 

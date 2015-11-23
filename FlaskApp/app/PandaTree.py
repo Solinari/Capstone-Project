@@ -144,7 +144,7 @@ def majorAnimator():
         for course in courseTrack[season].keys():
             pass
             #print("{} - {}".format(season, courseTrack[season][course]))
-    return str(courseTrack)
+    return courseTrack
 
 
 
