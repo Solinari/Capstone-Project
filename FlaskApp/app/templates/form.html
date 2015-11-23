@@ -19,6 +19,14 @@
                     <button input type="submit" class="btn" name="choice1" value="Production">Production</button>
                     <button input type="submit" class="btn" name="choice1" value="PostProduction">Post Production</button>
 					<button input type="submit" class="btn" name="choice1" value="Sound">Sound</button>
+                    <button input type="submit" class="btn" name="choice1" value="ComputationalFinance">Computational Finance</button>
+                    <button input type="submit" class="btn" name="choice1" value="ComputerGameDev">Computer Game Dev</button>
+                    <button input type="submit" class="btn" name="choice1" value="ComputerScience">Computer Science</button>
+                    <button input type="submit" class="btn" name="choice1" value="ComputerSecurity">Computer Security</button>
+                    <button input type="submit" class="btn" name="choice1" value="GovtRiskMgmtCompl">Govt. Risk Mgmt.</button>
+                    <button input type="submit" class="btn" name="choice1" value="NetworkSecurity">Network Security</button>
+                    <button input type="submit" class="btn" name="choice1" value="MediaArts">Media Arts</button>
+                    <button input type="submit" class="btn" name="choice1" value="ECommerceTech">E-Commerce Tech</button>
 					
                     
                 </div>
@@ -26,12 +34,9 @@
                 <!---Render stuff here-->
                 {% if tree %}
                 <table>
-                    { % for key, value in tree.iteritems() %}
                     <tr>
-                        {{ key }}
-                        <td>{{ value }}</td>
+                        <td>{{ tree }}</td>
                     </tr>
-                    {% endfor %}
 
                 </table>   
                 {% endif %}

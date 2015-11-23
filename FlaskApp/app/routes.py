@@ -35,40 +35,30 @@ def form(tree=None):
 
 
         button = request.form['choice1'] #this retrieves which radio button was pressed
-        # print("\n\nBUTTONBUTTONBUTTON")
-        # print(button)
-        # print("BUTTONBUTTONBUTTON")
 
-        if button == 'Animator': #if the button with attribute value = "A' is pressed
+        if button == 'Animator': 
 
-                #what you want to do when button A is pressed
             tree = majorAnimator()
-            # print("TREETREETREE")
-            # print(tree)
-            # print("$TREETREETREE")
-
-            # put a dict to list processor? make elements to return?  
-            
             return render_template("form.html",tree=tree)
 
         elif button == 'TechArtist':
-                #what you want to do when button B is pressed
+
             tree = majorTechnicalArtist()
             return render_template("form.html",tree=tree)
 			
         elif button == 'BusinessIT':
-                #what you want to do when button C is pressed
+
             tree = majorBusinessIT()
             return render_template("form.html",tree=tree)
 
         elif button == 'Production':
-            #what you want to do when button C is pressed
+
             tree = majorProduction()
             return render_template("form.html",tree=tree)
 
 			
         elif button == 'PostProduction':
-            #what you want to do when button C is pressed
+
             tree = majorPostProduction()
             return render_template("form.html",tree=tree)
 
@@ -77,6 +67,54 @@ def form(tree=None):
             tree = majorSound()
             return render_template("form.html",tree=tree)
 
+        ##majorComputationalFinance()
+        elif button == "ComputationalFinance":
+
+            tree = majorComputationalFinance()
+            return render_template("form.html",tree=tree)
+
+        ##majorComputerGameDev()
+        elif button == "ComputerGameDev":
+
+            tree = majorComputationalFinance()
+            return render_template("form.html",tree=tree)
+
+
+        ##majorComputerScience()
+        elif button == "ComputerScience":
+
+            tree = majorComputerScience()
+            return render_template("form.html",tree=tree)
+
+        ##majorComputerSecurity()
+        elif button == "ComputerSecurity":
+
+            tree = majorComputerSecurity()
+            return render_template("form.html",tree=tree)
+
+        ##majorGovtRiskMgmtCompl()
+        elif button == "GovtRiskMgmtCompl":
+
+            tree = majorGovtRiskMgmtCompl()
+            return render_template("form.html",tree=tree)
+
+        ##majorNetworkSecurity()
+        elif button == "NetworkSecurity":
+
+            tree = majorNetworkSecurity()
+            return render_template("form.html",tree=tree)
+
+        ##majorMediaArts()
+        elif button == "MediaArts":
+
+            tree = majorMediaArts()
+            return render_template("form.html",tree=tree)
+
+        ##majorECommerceTech()
+        elif button == "ECommerceTech":
+
+            tree = majorECommerceTech()
+            return render_template("form.html",tree=tree)
     
     return render_template("form.html")
 

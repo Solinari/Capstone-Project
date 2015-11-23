@@ -32,7 +32,19 @@ def randomQuery(df, myClass, mySeason):
     if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
 
+def faeQuery(df, myClass, mySeason):
+    '''Test querying for the focus area electives'''
+    pd.set_option('expand_frame_repr', False)
+    output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    #print(output)
+    if "Empty DataFrame" not in output:
+         output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
+         output = output.values.T.tolist()
+         return output
 
+    if "Empty DataFrame" in output:
+         return "COURSE NOT FOUND, SEE ADVISOR"
+    #return output
 
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
@@ -59,6 +71,8 @@ def majorAnimator():
     df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
+
+    usedFAE = []
 
     # Focus Area Electives
     FAE = ['ANI 430', 'ANI 431', 'ANI 432', 'ANI 433',
@@ -123,19 +137,25 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                #print(course)
+                print(course)
                 out = randomQuery(df, course, season)
-                #print(out)
+                print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
-                # TODO query for electives
+                for short in E:
+                    print(season)
                 courseTrack[season][course] = "SEE ADVISOR"
 
             if course == 'FAE':
-                # TODO queries for focus area electives
-                courseTrack[season][course] = "SEE ADVISOR"
-
+                for item in FAE:
+                    if item not in usedFAE:
+                        output = faeQuery(df, item, season)
+                        if "COURSE NOT FOUND, SEE ADVISOR" not in output:
+                            usedFAE.append(item)
+                            break
+                #print(output)
+                courseTrack[season][course] = output
 
     # works
     print(courseTrack)
@@ -144,6 +164,7 @@ def majorAnimator():
         for course in courseTrack[season].keys():
             pass
             #print("{} - {}".format(season, courseTrack[season][course]))
+    # works
     return courseTrack
 
 
@@ -249,7 +270,7 @@ def majorTechnicalArtist():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -341,7 +362,7 @@ def majorBusinessIT():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -428,7 +449,7 @@ def majorProduction():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -515,7 +536,7 @@ def majorPostProduction():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -602,7 +623,7 @@ def majorSound():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -703,7 +724,7 @@ def majorComputationalFinance():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -874,7 +895,7 @@ def majorComputerGameDev():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -1036,7 +1057,7 @@ def majorComputerScience():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -1202,7 +1223,7 @@ def majorComputerSecurity():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 
@@ -1316,7 +1337,7 @@ def majorGovtRiskMgmtCompl():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 # Major: Computer, Information and Network Security
@@ -1333,7 +1354,7 @@ def majorNetworkSecurity():
     #TDC 413, all quarters, none
     #TDC 405, all quarters, none
     #CNS 418, winter, TDC 411
-    
+
     #foundation courses
     # TDC 460, all quarters, TDC 405 and TD 413
     # TDC 463, all quarters, TDC 405 and TD 413
@@ -1401,7 +1422,7 @@ def majorNetworkSecurity():
     winterTwo =  ['CAP']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1427,7 +1448,7 @@ def majorNetworkSecurity():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
 
 
 # Major: Digital Communication and Media Arts
@@ -1441,7 +1462,7 @@ def majorMediaArts():
     #Introductory courses (name, quarters offered, prereqs)
     #DC 414, fall, none
     #DMA 405, fall, none
-    
+
     #foundation courses
     # CMNS 570, fall, none
     # DMA 527, winter, none
@@ -1498,7 +1519,7 @@ def majorMediaArts():
     winterTwo =  ['AC', 'FAE', 'FAE']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1520,7 +1541,97 @@ def majorMediaArts():
 
 
     # works
-    return str(courseTrack)
+    return courseTrack
+
+
+# Major: E-Commerce Technology
+def majorECommerceTech():
+    ''' defines E-Commerce Technology major requirements'''
+
+    df = returnDataFrame()
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC 401
+    #CSC 403, all quarters, CSC 402
+    #ECT 410, fall/spring, CSC 401 or IT 411
+
+    #foundation courses
+    # ECT 424, all quarters, none
+    # ECT 455, fall/spring, ECT 410 or HCI 430
+    # CSC 453, all quarters, CSC 403
+    # SE 430, all quarters, CSC 403
+
+    #Advanced Courses - take ALL classes
+    #ECT 480, spring, ECT 424
+    #ECT 481, winter, ECT 410
+    #ECT 582, fall, ECT 424
+    AC = ['ECT 480', 'ECT 481', 'ECT 582']
+
+    #Major Elective Courses
+    # take 5, at least 2 must be 500+
+    ME = ['ECT 436', 'ECT 556', 'ECT 565', 'ECT 583', 'ECT 584', 'ECT 586',
+          'ECT 587', 'HCI 440', 'HCI 421', 'IS 430', 'IS 431', 'IS 485', 'IS 535',
+          'IS 560', 'IS 570', 'CSC 452', 'CSC 454', 'CSC 495', 'CSC 543',
+          'CSC 554', 'SE 452', 'SE 457', 'SE 511', 'SE 554', 'SE 560']
+
+    #capstone, fall, completion of req. courses
+    CAP = 'ECT 589'
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['ECT 424', 'ECT 455', 'ME']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 453', 'ME', 'AC']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['SE 430', 'ME', 'AC']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['ECT 589', 'AC']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['ME', 'ME']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'ME' and course != 'AC':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'AC':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'ME':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+    # works
+    return courseTrack
 
 majorAnimator()
 ##majorTechnicalArtist()
@@ -1535,3 +1646,4 @@ majorAnimator()
 ##majorGovtRiskMgmtCompl()
 ##majorNetworkSecurity()
 ##majorMediaArts()
+##majorECommerceTech()
