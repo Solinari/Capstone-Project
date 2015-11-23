@@ -2387,6 +2387,92 @@ def majorComputationalMethods():
     # works
     print(courseTrack)
 
+#major: predictive analytics
+#concentration: health care
+def majorHealthCareConcentration():
+    ''' Predictive Analytics Health Care Concentration major requirements'''
+
+    df = returnDataFrame()
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # 2 Open Electives, range 421-699
+    E = ['CNS', 'CSC', 'ECT', 'GAM', 'GPH', 'HCI',
+           'HIT', 'IPD', 'IS', 'IT', 'PM', 'SE', 'TDC']
+
+    # capstone, one of the three choices
+    #IS - winter, PM - Spring, ECT - Fall
+    CAP = ['CSC 697', 'CSC 672', 'CSC 695', 'CSC 698']
+	
+    #Students must take 1 course in applied analytics chosen among:
+    TAKE1 = ['CSC 465', 'CSC 495', 'ECT 584', 'CSC 575']
+    TAKE2 = ['CSC 425', 'CSC 433', 'CSC 452', 'CSC 465', 'CSC 478' ,
+          'CSC 481' ,'CSC 482','CSC 495','CSC 521','CSC 529',
+          'CSC 543','CSC 555','CSC 575','CSC 576','CSC 578',
+          'CSC 594','CSC 598','ECT 584','GEO 441','GEO 442',
+          'GPH 565','HCI 512','IPD 451','IS 549','IS 574',
+          'IS 578','MGT 559','MGT 798','MKT 555','MKT 530',
+          'MKT 534','MKT 595','MKT 798']
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['IT 403', 'CSC 412', 'CSC 401']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # animation focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 455', 'CSC 423', 'CSC 424']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # animation focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['TAKE2', 'TAKE1', 'TAKE2']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    # second year maps to fall winter with open electives later
+    # animation elective is E
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['IS 467', 'E', 'MGT 559']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # animation focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['MGT 798', 'CAP']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'CAP':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'CAP':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+                
+    # works
+    print(courseTrack)
+
 #major: Predictive Analytics
 #Concentration: Hospitality
 #author: Al Abdeladi
@@ -2497,4 +2583,6 @@ def majorPredictiveAnalyticsHospitality():
 ##majorIsStandard()
 ##majorItProjectManagement()
 ##majorNetworkEngineeringAndSecurity()
-majorComputationalMethods()
+##majorComputationalMethods()
+##majorHealthCareConcentration()
+##majorPredictiveAnalyticsHospitality()
