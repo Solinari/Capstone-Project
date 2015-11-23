@@ -54,27 +54,28 @@ def form(tree=None):
         elif button == 'TechArtist':
                 #what you want to do when button B is pressed
             tree = majorTechnicalArtist()
-			return render_template("form.html",tree=tree)
+            return render_template("form.html",tree=tree)
 			
         elif button == 'BusinessIT':
                 #what you want to do when button C is pressed
-			tree = majorBusinessIT()
+            tree = majorBusinessIT()
             return render_template("form.html",tree=tree)
-       
-	   elif button == 'Production':
-                #what you want to do when button C is pressed
-			tree = majorProduction()
+
+        elif button == 'Production':
+            #what you want to do when button C is pressed
+            tree = majorProduction()
             return render_template("form.html",tree=tree)
+
 			
         elif button == 'PostProduction':
-                #what you want to do when button C is pressed
-			tree = majorPostProduction()
+            #what you want to do when button C is pressed
+            tree = majorPostProduction()
             return render_template("form.html",tree=tree)
-		
-		elif button == "Sound"
-		
-		tree = majorSound()
-		return render_template("form.html",tree=tree)
+
+        elif button == "Sound":
+
+            tree = majorSound()
+            return render_template("form.html",tree=tree)
 
     
     return render_template("form.html")

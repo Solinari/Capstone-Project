@@ -19,7 +19,7 @@ def randomQuery(df, myClass, mySeason):
     ''' Test querying from class and season with .sample()'''
     #this returns a dataframe cast to a string
     out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
-    #print(out)
+    ##print(out)
     # if empty
     if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
@@ -117,9 +117,9 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -218,13 +218,13 @@ def majorTechnicalArtist():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'GE' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'GE':
@@ -310,13 +310,13 @@ def majorBusinessIT():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'CAP':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -397,13 +397,13 @@ def majorProduction():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -484,13 +484,13 @@ def majorPostProduction():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -571,13 +571,13 @@ def majorSound():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -672,13 +672,13 @@ def majorComputationalFinance():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'AC':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -843,13 +843,13 @@ def majorComputerGameDev():
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'Cap':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -1005,13 +1005,13 @@ def majorComputerScience():
                 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -1171,13 +1171,13 @@ def majorComputerSecurity():
     
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'CAP' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'CAP':
@@ -1281,13 +1281,13 @@ def majorGovtRiskMgmtCompl():
     
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'CAP' and course != 'FAE' and course != 'AC':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'CAP':
