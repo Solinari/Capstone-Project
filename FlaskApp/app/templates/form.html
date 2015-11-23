@@ -26,10 +26,11 @@
                 <!---Render stuff here-->
                 {% if tree %}
                 <table>
-                        
+                    { % for season in tree.keys() %}
                     <tr>
-                        <td>{{ tree }}</td>
+                        <td>{{ tree[season] }}</td>
                     </tr>
+                    {% endfor %}
 
                 </table>   
                 {% endif %}

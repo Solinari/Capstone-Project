@@ -138,8 +138,12 @@ def majorAnimator():
 
 
     # works
+    print(courseTrack)
+    for season in sorted(courseTrack.keys()):
 
-    
+        for course in courseTrack[season].keys():
+            pass
+            #print("{} - {}".format(season, courseTrack[season][course]))
     return str(courseTrack)
 
 
