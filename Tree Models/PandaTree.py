@@ -37,9 +37,13 @@ def faeQuery(df, myClass, mySeason):
     pd.set_option('expand_frame_repr', False)
     output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
     print(output)
+    if "Empty DataFrame" not in output:
+        output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
+        output = output.values.T.tolist()
+        return output
+        
     if "Empty DataFrame" in output:
         return "COURSE NOT FOUND, SEE ADVISOR"
-    return output
 
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
