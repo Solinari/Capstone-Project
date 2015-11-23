@@ -1324,29 +1324,27 @@ def majorNetworkSecurity():
     #CNS 418, winter, TDC 411
     
     #foundation courses
-    # CSC 451, all quarters, none
+    # TDC 460, all quarters, TDC 405 and TD 413
+    # TDC 463, all quarters, TDC 405 and TD 413
+    # TDC 477, all quarters, TDC 463 or CSC 435
     # CNS 477, fall/winter, CNS 440 or IS 433
     # CNS 440, all quarters, none
-    # IS 444, fall/spring, none
-    # IS 505, all quarters, none
 
-    # Advanced Courses - 3 ACs
-    AC = ['CSC 487', 'CNS 533', 'IS 560']
+    #Advanced Courses, take all 3 ACs
+    #prereqs - must finish TDC 460, TD 463, and TDC 477
+    AC = ['TDC 511', 'TDC 563', 'TDC 577']
 
     # complete 1 of the folowing
-    # CNS 490, spring, CNS 440
-    # IS 430, all quarters, none
-    # IS 483, winter, completion of 5+ SoC MS lvl courses
-    take1 = ['CNS 490', 'IS 430', 'IS 483']
+    take1 = ['TDC 468', 'TDC 562', 'TDC 567', 'TDC 560', 'TDC 568']
 
     #Major Elective Courses
-    # Complete 2 CINS courses 421+ OR 2 courses from list
+    # Complete 1 CINS course 421+ OR 1 course from list
     ME = ['ACC 500', 'ACC 541', 'ACC 547', 'CSC 439', 'CSC 440', 'CSC 536',
          'CSC 557', 'ECT 582', 'IS 421', 'IS 444', 'IS 505', 'IS 506', 'SE 430',
          'SE 482', 'SE 525', 'SE 526', 'SE 529', 'TDC 468', 'TDC 511', 'TDC 560',
          'TDC 562', 'TDC 563', 'TDC 567', 'TDC 568', 'TDC 577']
 
-    # 1 open elective in the range 421-699
+    # 2 open electiveS in the range 421-699
     OE = [ 'CSC', 'CNS', 'TDC', 'SE', 'IS', 'ECT',
            'IT', 'PM', 'IPD', 'HIT', 'HCI', 'GAM']
 
@@ -1357,8 +1355,8 @@ def majorNetworkSecurity():
     CAP = ['CNS 594', 'CSC 695', 'CSC 698']
 
     #list of all elective courses required
-    #ME - take 2 courses
-    #OE, take1 - take 1
+    #OE - take 2 courses
+    #ME, take1 - take 1
     #TOTAL 4 FAEs
     FAE = ['take1', 'ME', 'OE']
 
