@@ -18,10 +18,22 @@ def OpenCSV2DF(file):
 def randomQuery(df, myClass, mySeason):
     ''' Test querying from class and season with .sample()'''
     #this returns a dataframe cast to a string
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    pd.set_option('expand_frame_repr', False)
+    out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    #print(out)
+=======
+>>>>>>> Stashed changes
     out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample())
     print("Out is: " + out)
     print(out)
     print("END OUT")
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     # if empty
     if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
@@ -609,7 +621,7 @@ def majorComputationalFinance():
     #CSC 404, all quarters, none
     #IT 403, all quarters, none
     #CSC 412, Fall/Winter, none
-    
+
     #CDM foundation courses
     # CSC 423, all quarters, IT 403
     # CSC 425, Fall/Winter, CSC423 or MAT 456
@@ -712,7 +724,7 @@ def majorComputerGameDev():
     #CSC 403, all quarters, CSC402
     #CSC 406, all quarters, CSC401
     #CSC 407, all quarters, CSC406 and CSC402
-    
+
     #foundation courses
     # GAM 425, Fall, CSC 461 and CSC 403
     # CSC 461; Fall; CSC 400, CSC 403, CSC 407
@@ -841,7 +853,7 @@ def majorComputerGameDev():
     #GAM 690, winter, GAM 475
     #GAM 691, spring, GAM 474 or SE 456
     #GAM 695, all quarters, GAM 575 and consent of teacher
-    
+
 
     # query for course in season
     for season in list(courseTrack.keys()):
@@ -883,7 +895,7 @@ def majorComputerScience():
     #CSC 403, all quarters, CSC402
     #CSC 406, all quarters, CSC401
     #CSC 407, all quarters, CSC406 and CSC402
-    
+
     #foundation courses
     # CSC 421, all quarters, CSC 400 and CSC 403
     # CSC 435, all quarters, CSC 403 and CSC 407
@@ -1004,7 +1016,7 @@ def majorComputerScience():
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
 
-                
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1046,7 +1058,7 @@ def majorComputerSecurity():
     #CSC 403, all quarters, CSC402
     #CSC 406, all quarters, CSC401
     #CSC 407, all quarters, CSC406 and CSC402
-    
+
     #foundation courses
     # CSC 435, all quarters, CSC 403 and CSC 407
     # SE 450, all quarters, CSC 403
@@ -1170,7 +1182,7 @@ def majorComputerSecurity():
     winterTwo =  ['FAE', 'CAP']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1197,7 +1209,7 @@ def majorComputerSecurity():
 
 
 # Major: Computer, Information and Network Security
-# Concentration: Governance, Risk Management and Compliance 
+# Concentration: Governance, Risk Management and Compliance
 def majorGovtRiskMgmtCompl():
     ''' defines Governance, Risk Management
     and Compliance major requirements'''
@@ -1210,7 +1222,7 @@ def majorGovtRiskMgmtCompl():
     #IT 403, all quarters, none
     #TDC 411, fall/winter, none
     #CNS 418, winter, TDC 411
-    
+
     #foundation courses
     # CSC 451, all quarters, none
     # CNS 477, fall/winter, CNS 440 or IS 433
@@ -1280,7 +1292,7 @@ def majorGovtRiskMgmtCompl():
     winterTwo =  ['CAP']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
