@@ -36,7 +36,7 @@ def faeQuery(df, myClass, mySeason):
     '''Test querying for the focus area electives'''
     pd.set_option('expand_frame_repr', False)
     output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
-    print(output)
+    #print(output)
     if "Empty DataFrame" not in output:
          output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
          output = output.values.T.tolist()
@@ -44,7 +44,7 @@ def faeQuery(df, myClass, mySeason):
 
     if "Empty DataFrame" in output:
          return "COURSE NOT FOUND, SEE ADVISOR"
-    return output
+    #return output
 
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
@@ -143,14 +143,12 @@ def majorAnimator():
                 courseTrack[season][course] = out
 
             if course == 'E':
-                # TODO query for electives
+                for short in E:
+                    print season
                 courseTrack[season][course] = "SEE ADVISOR"
 
             if course == 'FAE':
                 for item in FAE:
-                    print(season)
-                    print(item)
-                    print(usedFAE)
                     if item not in usedFAE:
                         output = faeQuery(df, item, season)
                         if "COURSE NOT FOUND, SEE ADVISOR" not in output:
