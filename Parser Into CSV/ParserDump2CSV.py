@@ -231,7 +231,7 @@ def parsedDataToDataFrame(parsedData):
                                         'Meeting Time': meetingTime,
                                         'Location': location,
                                         'Instructor': instructor,
-                                        'Insutructor Url': instructorUrl,
+                                        'Instructor Url': instructorUrl,
                                         'Syllabus Url':syllabusUrl})
     parsedDataDataFrame.to_csv(
         'Catalog.csv',
