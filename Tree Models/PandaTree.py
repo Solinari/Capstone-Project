@@ -123,9 +123,9 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                #print(course)
+                print(course)
                 out = randomQuery(df, course, season)
-                #print(out)
+                print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
@@ -1527,55 +1527,53 @@ def majorECommerceTech():
     courseTrack = {}
 
     #Introductory courses (name, quarters offered, prereqs)
-    #DC 414, fall, none
-    #DMA 405, fall, none
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC 401
+    #CSC 403, all quarters, CSC 402
+    #ECT 410, fall/spring, CSC 401 or IT 411
     
     #foundation courses
-    # CMNS 570, fall, none
-    # DMA 527, winter, none
-    # DMA 525, winter, none
-    # MCS 575, spring, none
+    # ECT 424, all quarters, none
+    # ECT 455, fall/spring, ECT 410 or HCI 430
+    # CSC 453, all quarters, CSC 403
+    # SE 430, all quarters, CSC 403
 
-    #Advanced Courses - take both classes
-    #DMA 555 must be taken twice, winter, none
-    AC = ['DMA 555', 'DMA 555', 'DMA 535']
+    #Advanced Courses - take ALL classes
+    #ECT 480, spring, ECT 424
+    #ECT 481, winter, ECT 410
+    #ECT 582, fall, ECT 424
+    AC = ['ECT 480', 'ECT 481', 'ECT 582']
 
-    #take 2 from the list
-    take2 = ['DMA 410', 'DMA 415', 'DMA 425', 'DMA 475', 'DMA 480',
-             'DMAN 490', 'EXP 440', 'EXP 441', 'HCD 401']
+    #Major Elective Courses
+    # take 5, at least 2 must be 500+
+    ME = ['ECT 436', 'ECT 556', 'ECT 565', 'ECT 583', 'ECT 584', 'ECT 586',
+          'ECT 587', 'HCI 440', 'HCI 421', 'IS 430', 'IS 431', 'IS 485', 'IS 535',
+          'IS 560', 'IS 570', 'CSC 452', 'CSC 454', 'CSC 495', 'CSC 543',
+          'CSC 554', 'SE 452', 'SE 457', 'SE 511', 'SE 554', 'SE 560']
 
-    #Major electives - take 4
-    # 2 graduate level (400+) from College of Communication
-    # 2 graduate level (400+) from College of Communication, CDM or another
-    #college at DePaul
-    # TL,DR: take 2 from each list
-    NMS = ['NMS 502', 'NMS 504', 'NMS 508', 'NMS 509', 'NMS 520', 'NMS 521']
-    ART = ['ART 405', 'ART 427', 'ART 460', 'ART 461', 'ART 489', 'ART 490']
-
-    #NMS,ART,take2 - take 2 classes
-    #total FAEs - 6
-    FAE = ['take2', 'NMS', 'ART']
+    #capstone, fall, completion of req. courses
+    CAP = 'ECT 589'
 
     # dictionaries are class names to panda queries
     fallYearOne = 'Fall 2012-2013'
-    fallOne =  ['DC 414', 'DMA 405', 'FAE']
+    fallOne =  ['ECT 424', 'ECT 455', 'ME']
     fallOne = toMap(fallOne)
     courseTrack[fallYearOne] = fallOne
     # works
     #print(fallOne)
 
     winterYearOne = 'Winter 2013-2014'
-    winterOne =  ['DMA 527', 'DMA 525', 'AC']
+    winterOne =  ['CSC 453', 'ME', 'AC']
     winterOne = toMap(winterOne)
     courseTrack[winterYearOne] = winterOne
 
     springYearOne = 'Spring 2013-2014'
-    springOne =  ['MCS 575', 'FAE', 'AC']
+    springOne =  ['SE 430', 'ME', 'AC']
     springOne = toMap(springOne)
     courseTrack[springYearOne] = springOne
 
     fallYearTwo = 'Fall 2013-2014'
-    fallTwo =  ['CMNS 570', 'FAE', 'FAE']
+    fallTwo =  ['ECT 589', 'AC']
     fallTwo = toMap(fallTwo)
     courseTrack[fallYearTwo] = fallTwo
 
@@ -1583,7 +1581,7 @@ def majorECommerceTech():
     #print(fallTwo)
 
     winterYearTwo = 'Winter 2014-2015'
-    winterTwo =  ['AC', 'FAE', 'FAE']
+    winterTwo =  ['ME', 'ME']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
     
@@ -1592,7 +1590,7 @@ def majorECommerceTech():
         print(season)
         for course in list(courseTrack[season].keys()):
 
-            if course != 'FAE' and course != 'AC':
+            if course != 'ME' and course != 'AC':
                 print(course)
                 out = randomQuery(df, course, season)
                 print(out)
@@ -1602,10 +1600,9 @@ def majorECommerceTech():
                 # TODO query for electives
                 courseTrack[season][course] = "SEE ADVISOR"
 
-            if course == 'FAE':
+            if course == 'ME':
                 # TODO queries for focus area electives
                 courseTrack[season][course] = "SEE ADVISOR"
-
 
     # works
     return str(courseTrack)
