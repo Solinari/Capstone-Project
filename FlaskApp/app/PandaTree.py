@@ -137,14 +137,15 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
                 for short in E:
-                    print(season)
+                    #print(season)
+                    pass
                 courseTrack[season][course] = "SEE ADVISOR"
 
             if course == 'FAE':
@@ -158,14 +159,13 @@ def majorAnimator():
                 courseTrack[season][course] = output
 
     # works
-    print(courseTrack)
+    #print(courseTrack)
     for season in sorted(courseTrack.keys()):
 
         for course in courseTrack[season].keys():
-            pass
-            #print("{} - {}".format(season, courseTrack[season][course]))
+            print("{} - {}".format(season, courseTrack[season][course]))
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -270,7 +270,7 @@ def majorTechnicalArtist():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -362,7 +362,7 @@ def majorBusinessIT():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -449,7 +449,7 @@ def majorProduction():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -536,7 +536,7 @@ def majorPostProduction():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -623,7 +623,7 @@ def majorSound():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -724,7 +724,7 @@ def majorComputationalFinance():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -895,7 +895,7 @@ def majorComputerGameDev():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -1057,7 +1057,7 @@ def majorComputerScience():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -1223,7 +1223,7 @@ def majorComputerSecurity():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 
@@ -1337,7 +1337,7 @@ def majorGovtRiskMgmtCompl():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 # Major: Computer, Information and Network Security
@@ -1448,7 +1448,7 @@ def majorNetworkSecurity():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 # Major: Digital Communication and Media Arts
@@ -1541,7 +1541,7 @@ def majorMediaArts():
 
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
 
 # Major: E-Commerce Technology
@@ -1631,9 +1631,9 @@ def majorECommerceTech():
                 courseTrack[season][course] = "SEE ADVISOR"
 
     # works
-    return courseTrack
+    return str(courseTrack)
 
-##majorAnimator()
+majorAnimator()
 ##majorTechnicalArtist()
 ##majorBusinessIT()
 ##majorProduction()
