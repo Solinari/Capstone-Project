@@ -1,0 +1,7 @@
+In order to run the flask app you will need
+1.Flask
+2.pip install pandas
+3.pip install numpy
+4.pip install wtforms
+
+*there might be dependencies needed to be able to install pandas and numpy.
