@@ -115,6 +115,57 @@ def form(tree=None):
 
             tree = majorECommerceTech()
             return render_template("form.html",tree=tree)
+
+        ##majorHumanComputerInteraction()
+        elif button == "HumanComputerInteraction":
+
+            tree = majorHumanComputerInteraction()
+            return render_template("form.html",tree=tree)
+        ##majorBusinessAnalysisSystemsAnalysis()
+        elif button == "BusinessAnalysisSystemsAnalysis":
+
+            tree = majorBusinessAnalysisSystemsAnalysis()
+            return render_template("form.html",tree=tree)
+        ##majorBusinessIntelligence()
+        elif button == "BusinessIntelligence":
+
+            tree = majorBusinessIntelligence()
+            return render_template("form.html",tree=tree)
+        ##majorDatabaseAdministration()
+        elif button == "DatabaseAdministration":
+
+            tree = majorDatabaseAdministration()
+            return render_template("form.html",tree=tree)
+        ##majorItEnterpriseManagement()
+        elif button == "ItEnterpriseManagement":
+
+            tree = majorItEnterpriseManagement()
+            return render_template("form.html",tree=tree)
+        ##majorIsStandard()
+        elif button == "IsStandard":
+
+            tree = majorIsStandard()
+            return render_template("form.html",tree=tree)
+        ##majorItProjectManagement()
+        elif button == "ItProjectManagement":
+
+            tree = majorItProjectManagement()
+            return render_template("form.html",tree=tree)
+        ##majorPredictiveAnalyticsHospitality()
+        elif button == "PredictiveAnalyticsHospitality":
+
+            tree = majorPredictiveAnalyticsHospitality()
+            return render_template("form.html",tree=tree)
+        ##majorSoftwareArchitecture()
+        elif button == "SoftwareArchitecture":
+
+            tree = majorSoftwareArchitecture()
+            return render_template("form.html",tree=tree)
+        ##majorSoftwareDevelopment()
+        elif button == "SoftwareDevelopment":
+
+            tree = majorSoftwareDevelopment()
+            return render_template("form.html",tree=tree)        
     
     return render_template("form.html")
 

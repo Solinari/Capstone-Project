@@ -66,8 +66,7 @@ def toMap(classes):
 
     return dict.fromkeys(classes, None)
 
-def fancyoutlist = fancyPrint(courseTrack)
-    return outlist:
+def fancyPrint(courseTrack):
     '''formats the output'''
     fancyprint = []
     for season in sorted(courseTrack.keys()):
@@ -182,7 +181,7 @@ def majorAnimator():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -288,7 +287,7 @@ def majorTechnicalArtist():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -381,7 +380,7 @@ def majorBusinessIT():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -469,7 +468,7 @@ def majorProduction():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -557,7 +556,7 @@ def majorPostProduction():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -645,7 +644,7 @@ def majorSound():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -747,7 +746,7 @@ def majorComputationalFinance():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -919,7 +918,7 @@ def majorComputerGameDev():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1082,7 +1081,7 @@ def majorComputerScience():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1249,7 +1248,7 @@ def majorComputerSecurity():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1364,7 +1363,7 @@ def majorGovtRiskMgmtCompl():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1476,7 +1475,7 @@ def majorNetworkSecurity():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1570,7 +1569,7 @@ def majorMediaArts():
 
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 
@@ -1661,7 +1660,7 @@ def majorECommerceTech():
                 courseTrack[season][course] = "SEE ADVISOR"
 
     # works
-    outlist = fancyoutlist = fancyPrint(courseTrack)
+    outlist = fancyPrint(courseTrack)
     return outlist
 
 #major: Human Computer Interaction
