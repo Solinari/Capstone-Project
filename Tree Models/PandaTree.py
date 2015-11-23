@@ -1834,6 +1834,85 @@ def majorBusinessAnalysisSystemsAnalysis():
     # works
     print(courseTrack)
 
+#major: Information Systems
+#Concentration: Business Intelligence
+#Author: Al Abdeladi
+def majorBusinessIntelligence():
+    ''' Information Systems Business Intelligence Concentration major requirements'''
+
+    df = returnDataFrame()
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    # 2 Open Electives, range 421-699
+    E = ['CNS', 'CSC', 'ECT', 'GAM', 'GPH', 'HCI',
+           'HIT', 'IPD', 'IS', 'IT', 'PM', 'SE', 'TDC']
+	
+    ME = ['CNS 440','IS 505','IS 536','CNS 487','IPD 451','IS 456',
+          'IS 575', 'CSC 424', 'ECT 584', 'HCI 512', 'GEO 441']
+
+    # capstone, one of the three choices
+    #IS - winter, PM - Spring, ECT - Fall
+    CAP = ['IS 577']
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['IS 421', 'CSC 451', 'IS 574']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    # animation focus area elective is FAE
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['IS 430', 'IT 411', 'IT 403']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    # animation focus areaelective is FAE
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['CSC 423', 'IS 467', 'IS 422']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+	
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['IS 549','ME' , 'ME']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    # animation focus area elective is FAE
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['IS 577','ME', 'E']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+	
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'ME':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'ME':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+    # works
+    print(courseTrack)
+
 
 #major: Predictive Analytics
 #Concentration: Hospitality
@@ -1939,7 +2018,8 @@ def majorPredictiveAnalyticsHospitality():
 ##majorMediaArts()
 ##majorECommerceTech()
 ##majorHumanComputerInteraction()
-majorBusinessAnalysisSystemsAnalysis()
+##majorBusinessAnalysisSystemsAnalysis()
+majorBusinessIntelligence()
 ##majorPredictiveAnalyticsHospitality()
 ##majorSoftwareArchitecture()
 ##majorSoftwareDevelopment()
