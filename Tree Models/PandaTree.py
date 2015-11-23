@@ -975,14 +975,14 @@ def majorComputerScience(df):
     courseTrack[springYearOne] = springOne
 
     fallYearTwo = 'Fall 2013-2014'
-    fallTwo =  ['SE 450', 'FAE', 'FAE']
+    fallTwo =  ['SE 450', 'FAE']
     fallTwo = toMap(fallTwo)
     courseTrack[fallYearTwo] = fallTwo
     # works
     #print(fallThree)
 
     winterYearTwo = 'Winter 2014-20155'
-    winterTwo =  ['CSC 435']
+    winterTwo =  ['FAE', 'CSC 435']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
 
@@ -1015,50 +1015,35 @@ majorComputerScience(myDF)
 # Major: Computer, Information and Network Security
 # Concentration: Computer Security
 def majorComputerSecurity(df):
-    ''' defines Computer Security major requirements'''
 
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
-
-    #Introductory courses (name, quarters offered, prereqs)
-    #CSC 400, all quarters, none
-    #CSC 401, all quarters, none
-    #CSC 402, all quarters, CSC401
-    #CSC 403, all quarters, CSC402
-    #CSC 406, all quarters, CSC401
-    #CSC 407, all quarters, CSC406 and CSC402
     
     #foundation courses
     # CSC 435, all quarters, CSC 403 and CSC 407
     # SE 450, all quarters, CSC 403
-    # TDC 477
-    # CNS 440
-    # CNS 450
+    # TDC 477, all quarters, TDC 463 or CSC 435
+    # CNS 440, all quarters, none
+    # CNS 450, fall, CSC 403 and CSC 406
 
     # Advanced Courses
-    # CSC 439
+    # CSC 439, all quarters, CSC 407
 
     # complete 2 of the 4
-    # CSC 440
-    # SE 525
-    # SE 526
-    # TDC 577
+    # CSC 440, winter, CSC 403
+    # SE 525, winter, CSC 435 and SE 450
+    # SE 526, winter, CSC 435
+    # TDC 577, fall/spring, TDC 477 or TDC 572
+    take2 = ['CSC 440', 'SE 525', 'SE 526', 'TDC 577']
 
     # complete 1 of the following (not counting courses taken to satisfy
     # requirements above)
-    # CNS 477
-    # CSC 440
-    # SE 482
-    # SE 525
-    # SE 526
-    # SE 529
-    # CSC 536
-    # CSC 557
-    # TDC 577
+    take1 = ['CNS 477', 'CSC 440', 'SE 482', 'SE 525', 'SE 526',
+             'SE 529', 'CSC 536', 'CSC 557', 'TDC 577']
 
     #Major Elective Courses
     # Complete 1 CINS course 421+ OR a course from list
-    E = ['ACC 500', 'ACC 541', 'ACC 547', 'CSC 439', 'CSC 440', 'CSC 536',
+    ME = ['ACC 500', 'ACC 541', 'ACC 547', 'CSC 439', 'CSC 440', 'CSC 536',
          'CSC 557', 'ECT 582', 'IS 421', 'IS 444', 'IS 505', 'IS 506', 'SE 430',
          'SE 482', 'SE 525', 'SE 526', 'SE 529', 'TDC 468', 'TDC 511', 'TDC 560',
          'TDC 562', 'TDC 563', 'TDC 567', 'TDC 568', 'TDC 577']
@@ -1066,27 +1051,87 @@ def majorComputerSecurity(df):
     # 2 open electives in the range 421-699
     OE = [ 'CSC', 'CNS', 'TDC', 'SE', 'IS', 'ECT',
            'IT', 'PM', 'IPD', 'HIT', 'HCI', 'GAM']
-    
+
+    #capstone, 1 of the following
+    # CNS 594, winter/spring, TDC 477 or CNS 533
+    # CSC 695, winter/spring, all foundation courses
+    # CSC 698, fall/spring, successful defense of a thesis
+    CAP = ['CNS 594', 'CSC 695', 'CSC 698']
+
+    #list of all elective courses required
+    #ME, TAKE1 - take 1 course
+    #OE, TAKE2 - take 2 courses
+    #TOTAL OF 6
+    FAE = ['take1', 'take2', 'ME', 'OE']
+
     # dictionaries are class names to panda queries
+##    fallYearOne = 'Fall 2012-2013'
+##    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
+##    fallOne = toMap(fallOne)
+##    courseTrack[fallYearOne] = fallOne
+##    # works
+##    #print(fallOne)
+##
+##    winterYearOne = 'Winter 2013-2014'
+##    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
+##    winterOne = toMap(winterOne)
+##    courseTrack[winterYearOne] = winterOne
+##
+##    springYearOne = 'Spring 2013-2014'
+##    springOne =  ['CSC 403', 'CSC 407', 'FAE']
+##    springOne = toMap(springOne)
+##    courseTrack[springYearOne] = springOne
+##
+##    fallYearTwo = 'Fall 2013-2014'
+##    fallTwo =  ['CSS 435', 'SE 450', 'CNS 450']
+##    fallTwo = toMap(fallTwo)
+##    courseTrack[fallYearTwo] = fallTwo
+##
+##    # works
+##    #print(fallTwo)
+##
+##    winterYearTwo = 'Winter 2014-2015'
+##    winterTwo =  ['CSC 439', 'TDC 477', 'FAE']
+##    winterTwo = toMap(winterTwo)
+##    courseTrack[winterYearTwo] = winterTwo
+##
+##    springYearTwo = 'Spring 2014-2015'
+##    springTwo =  ['CNS 440', 'FAE', 'FAE']
+##    springTwo = toMap(springTwo)
+##    courseTrack[springYearTwo] = springTwo
+##
+##    fallYearThree = 'Fall 2014-2015'
+##    fallThree =  ['FAE', 'FAE', 'FAE']
+##    fallThree = toMap(fallThree)
+##    courseTrack[fallYearThree] = fallThree
+##    # works
+##    #print(fallThree)
+##
+##    winterYearThree = 'Winter 2015-2016'
+##    winterThree =  ['CAP']
+##    winterThree = toMap(winterThree)
+##    courseTrack[winterYearThree] = winterThree
+
     fallYearOne = 'Fall 2012-2013'
-    fallOne =  ['CSC 400', 'CSC 401', 'FAE']
+    fallOne =  ['CSS 435', 'SE 450', 'CNS 450']
     fallOne = toMap(fallOne)
     courseTrack[fallYearOne] = fallOne
+
     # works
     #print(fallOne)
 
     winterYearOne = 'Winter 2013-2014'
-    winterOne =  ['CSC 402', 'CSC 406', 'FAE']
+    winterOne =  ['CSC 439', 'TDC 477', 'FAE']
     winterOne = toMap(winterOne)
     courseTrack[winterYearOne] = winterOne
 
     springYearOne = 'Spring 2013-2014'
-    springOne =  ['CSC 403', 'CSC 407', 'FAE']
+    springOne =  ['CNS 440', 'FAE', 'FAE']
     springOne = toMap(springOne)
     courseTrack[springYearOne] = springOne
 
     fallYearTwo = 'Fall 2013-2014'
-    fallTwo =  ['CSC 421', 'CSC 435', 'CSC 447']
+    fallTwo =  ['FAE', 'FAE',]
     fallTwo = toMap(fallTwo)
     courseTrack[fallYearTwo] = fallTwo
 
@@ -1094,44 +1139,22 @@ def majorComputerSecurity(df):
     #print(fallTwo)
 
     winterYearTwo = 'Winter 2014-2015'
-    winterTwo =  ['CSC 453', 'SE 450', 'FAE']
+    winterTwo =  ['FAE', 'CAP']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-
-    springYearTwo = 'Spring 2014-2015'
-    springTwo =  ['FAE', 'FAE', 'FAE']
-    springTwo = toMap(springTwo)
-    courseTrack[springYearTwo] = springTwo
-
-    fallYearThree = 'Fall 2014-2015'
-    fallThree =  ['FAE']
-    fallThree = toMap(fallThree)
-    courseTrack[fallYearThree] = fallThree
-    # works
-    #print(fallThree)
-
-    winterYearThree = 'Winter 2015-2016'
-    winterThree =  ['', '', '']
-    winterThree = toMap(winterThree)
-    courseTrack[winterYearThree] = winterThree
-
-    springYearThree = 'Spring 2015-2016'
-    springThree =  ['', '', '']
-    springThree = toMap(springThree)
-    courseTrack[springYearThree] = springThree
-                
+    
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
         for course in list(courseTrack[season].keys()):
 
-            if course != 'E' and course != 'FAE':
+            if course != 'CAP' and course != 'FAE':
                 print(course)
                 out = randomQuery(df, course, season)
                 print(out)
                 courseTrack[season][course] = out
 
-            if course == 'E':
+            if course == 'CAP':
                 # TODO query for electives
                 courseTrack[season][course] = "SEE ADVISOR"
 
