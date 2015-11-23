@@ -36,6 +36,7 @@ def faeQuery(df, myClass, mySeason):
     '''Test querying for the focus area electives'''
     pd.set_option('expand_frame_repr', False)
     output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    print(output)
     if "Empty DataFrame" in output:
         return "COURSE NOT FOUND, SEE ADVISOR"
     return output
@@ -142,6 +143,8 @@ def majorAnimator():
                 for item in FAE:
                     print(item)
                     output = faeQuery(df, item, season)
+                    if output != "COURSE NOT FOUND, SEE ADVISOR":
+                        break
                 #print(output)
                 courseTrack[season][course] = output
 
