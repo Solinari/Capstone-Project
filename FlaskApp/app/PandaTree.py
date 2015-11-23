@@ -1633,7 +1633,7 @@ def majorECommerceTech():
     # works
     return courseTrack
 
-majorAnimator()
+##majorAnimator()
 ##majorTechnicalArtist()
 ##majorBusinessIT()
 ##majorProduction()

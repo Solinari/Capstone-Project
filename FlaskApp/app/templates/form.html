@@ -32,14 +32,23 @@
                 </div>
 
                 <!---Render stuff here-->
-                {% if tree %}
+                <!-- {% if tree %}
                 <table>
                     <tr>
                         <td>{{ tree }}</td>
                     </tr>
 
                 </table>   
-                {% endif %}
+                {% endif %} -->
+
+                {% if tree %}
+                <dl>
+                    {% for key, value in tree.iteritems() %}
+                    <dt>{{ key }}</dt>
+                    <dd>{{ value }}</dd>
+                    {% endfor %}
+
+                </dl>   
 
                 <script type="text/jscript">
                     $("body").find("#radios1").children().each(function () {
