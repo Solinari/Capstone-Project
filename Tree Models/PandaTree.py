@@ -1015,9 +1015,18 @@ majorComputerScience(myDF)
 # Major: Computer, Information and Network Security
 # Concentration: Computer Security
 def majorComputerSecurity(df):
+    ''' defines Computer Security major requirements'''
 
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #CSC 400, all quarters, none
+    #CSC 401, all quarters, none
+    #CSC 402, all quarters, CSC401
+    #CSC 403, all quarters, CSC402
+    #CSC 406, all quarters, CSC401
+    #CSC 407, all quarters, CSC406 and CSC402
     
     #foundation courses
     # CSC 435, all quarters, CSC 403 and CSC 407
@@ -1167,3 +1176,116 @@ def majorComputerSecurity(df):
     print(courseTrack)
 
 majorComputerSecurity(myDF)
+
+# Major: Computer, Information and Network Security
+# Concentration: Governance, Risk Management and Compliance 
+def majorGovtRiskMgmtCompl(df):
+    ''' defines Governance, Risk Management
+    and Compliance major requirements'''
+
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #IT 403, all quarters, none
+    #TDC 411, fall/winter, none
+    #CNS 418, winter, TDC 411
+    
+    #foundation courses
+    # CSC 451, all quarters, none
+    # CNS 477, fall/winter, CNS 440 or IS 433
+    # CNS 440, all quarters, none
+    # IS 444, fall/spring, none
+    # IS 505, all quarters, none
+
+    # Advanced Courses - 3 ACs
+    AC = ['CSC 487', 'CNS 533', 'IS 560']
+
+    # complete 1 of the folowing
+    # CNS 490, spring, CNS 440
+    # IS 430, all quarters, none
+    # IS 483, winter, completion of 5+ SoC MS lvl courses
+    take1 = ['CNS 490', 'IS 430', 'IS 483']
+
+    #Major Elective Courses
+    # Complete 2 CINS courses 421+ OR 2 courses from list
+    ME = ['ACC 500', 'ACC 541', 'ACC 547', 'CSC 439', 'CSC 440', 'CSC 536',
+         'CSC 557', 'ECT 582', 'IS 421', 'IS 444', 'IS 505', 'IS 506', 'SE 430',
+         'SE 482', 'SE 525', 'SE 526', 'SE 529', 'TDC 468', 'TDC 511', 'TDC 560',
+         'TDC 562', 'TDC 563', 'TDC 567', 'TDC 568', 'TDC 577']
+
+    # 1 open elective in the range 421-699
+    OE = [ 'CSC', 'CNS', 'TDC', 'SE', 'IS', 'ECT',
+           'IT', 'PM', 'IPD', 'HIT', 'HCI', 'GAM']
+
+    #capstone, 1 of the following
+    # CNS 594, winter/spring, TDC 477 or CNS 533
+    # CSC 695, winter/spring, all foundation courses
+    # CSC 698, fall/spring, successful defense of a thesis
+    CAP = ['CNS 594', 'CSC 695', 'CSC 698']
+
+    #list of all elective courses required
+    #ME - take 2 courses
+    #OE, take1 - take 1
+    #TOTAL 4 FAEs
+    FAE = ['take1', 'ME', 'OE']
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['CSC 451', 'CNS 440', 'IS 444']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['CSC 477', 'IS 505', 'AC']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['AC', 'FAE', 'FAE']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['AC', 'FAE', 'FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['CAP']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+    
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'CAP' and course != 'FAE' and course != 'AC':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'CAP':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'AC':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    print(courseTrack)
+
+majorGovtRiskMgmtCompl(myDF)
