@@ -49,7 +49,7 @@ def faeQuery(df, myClass, mySeason):
 def eQuery(df, myClass, mySeason):
     '''Test querying for the general electives'''
     pd.set_option('expand_frame_repr', False)
-    outputE = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    outputE = str(df[(df['Class Name'].str.contains(myClass)) & (df['Season'] == mySeason)])
     #print(outputE)
     # if "Empty DataFrame" not in outputE:
     #      outputE = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
@@ -150,19 +150,18 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
                 usedClasses.append(course)
 
             if course == 'E':
                 for short in E:
-                    if short not in usedClasses:
-                        outputE = eQuery(df, short, season)
-                        print(outputE)
-                        if "COURSE NOT FOUND, SEE ADVISOR" not in outputE:
-                            break
+                    outputE = eQuery(df, short, season)
+                    print(outputE)
+                    if "COURSE NOT FOUND, SEE ADVISOR" not in outputE:
+                        break
                 courseTrack[season][course] = outputE
                 usedClasses.append(short)
 
