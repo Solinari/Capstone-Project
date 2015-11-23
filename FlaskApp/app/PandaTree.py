@@ -25,7 +25,8 @@ def randomQuery(df, myClass, mySeason):
     if "Empty DataFrame" not in out:
         out = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
         # stillis dataframe. converty to list
-        out = out.values.T.tolist()
+##        out = out.values.T.tolist()
+        out = list(out.values.flatten())
         #print(out)
         return out
 
@@ -39,7 +40,8 @@ def faeQuery(df, myClass, mySeason):
     #print(output)
     if "Empty DataFrame" not in output:
          output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
-         output = output.values.T.tolist()
+         #output = output.values.T.tolist()
+         output = list(output.values.flatten())
          return output
 
     if "Empty DataFrame" in output:
@@ -63,6 +65,25 @@ def toMap(classes):
     '''maps an array of classnames to dictionary'''
 
     return dict.fromkeys(classes, None)
+
+def fancyPrint(courseTrack):
+    '''formats the output'''
+    fancyprint = []
+    for season in sorted(courseTrack.keys()):
+##        fancyprint = fancyprint + season + "\n"
+        #print(season)
+        for course in courseTrack[season].keys():
+
+            fancyCrsEl = ""
+            for element in courseTrack[season][course]:
+
+                fancyCrsEl += str(element) + " "
+
+            fancyprint.append("{} - {}\n".format(season, fancyCrsEl))
+            #print("{} - {}".format(season, courseTrack[season][course]))
+
+    
+    return fancyprint
 
 # Major: Animation; Concentration: Animator
 def majorAnimator():
@@ -160,12 +181,10 @@ def majorAnimator():
 
     # works
     #print(courseTrack)
-    for season in sorted(courseTrack.keys()):
 
-        for course in courseTrack[season].keys():
-            print("{} - {}".format(season, courseTrack[season][course]))
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -270,7 +289,8 @@ def majorTechnicalArtist():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -362,7 +382,8 @@ def majorBusinessIT():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -449,7 +470,8 @@ def majorProduction():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -536,7 +558,8 @@ def majorPostProduction():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -623,7 +646,8 @@ def majorSound():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -724,7 +748,8 @@ def majorComputationalFinance():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -895,7 +920,8 @@ def majorComputerGameDev():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -1057,7 +1083,8 @@ def majorComputerScience():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -1223,7 +1250,8 @@ def majorComputerSecurity():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 
@@ -1337,7 +1365,8 @@ def majorGovtRiskMgmtCompl():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 # Major: Computer, Information and Network Security
@@ -1448,7 +1477,8 @@ def majorNetworkSecurity():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 # Major: Digital Communication and Media Arts
@@ -1541,7 +1571,8 @@ def majorMediaArts():
 
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
 
 # Major: E-Commerce Technology
@@ -1631,9 +1662,10 @@ def majorECommerceTech():
                 courseTrack[season][course] = "SEE ADVISOR"
 
     # works
-    return str(courseTrack)
+    outlist = fancyPrint(courseTrack)
+    return outlist
 
-majorAnimator()
+#majorAnimator()
 ##majorTechnicalArtist()
 ##majorBusinessIT()
 ##majorProduction()
