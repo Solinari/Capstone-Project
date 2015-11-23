@@ -46,6 +46,19 @@ def faeQuery(df, myClass, mySeason):
          return "COURSE NOT FOUND, SEE ADVISOR"
     #return output
 
+def eQuery(df, myClass, mySeason):
+    '''Test querying for the general electives'''
+    pd.set_option('expand_frame_repr', False)
+    outputE = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    #print(outputE)
+    # if "Empty DataFrame" not in outputE:
+    #      outputE = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
+    #      outputE = outputE.values.T.tolist()
+    #      return outputE
+
+    if "Empty DataFrame" in outputE:
+         return "COURSE NOT FOUND, SEE ADVISOR"
+    return outputE
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
 
@@ -73,7 +86,7 @@ def majorAnimator():
     courseTrack = {}
 
     usedFAE = []
-
+    usedClasses = []
     # Focus Area Electives
     FAE = ['ANI 430', 'ANI 431', 'ANI 432', 'ANI 433',
             'ANI 435', 'ANI 436', 'ANI 438', 'ANI 439',
@@ -141,11 +154,17 @@ def majorAnimator():
                 out = randomQuery(df, course, season)
                 print(out)
                 courseTrack[season][course] = out
+                usedClasses.append(course)
 
             if course == 'E':
                 for short in E:
-                    print season
-                courseTrack[season][course] = "SEE ADVISOR"
+                    if short not in usedClasses:
+                        outputE = eQuery(df, short, season)
+                        print(outputE)
+                        if "COURSE NOT FOUND, SEE ADVISOR" not in outputE:
+                            break
+                courseTrack[season][course] = outputE
+                usedClasses.append(short)
 
             if course == 'FAE':
                 for item in FAE:
@@ -156,6 +175,7 @@ def majorAnimator():
                             break
                 #print(output)
                 courseTrack[season][course] = output
+                usedClasses.append(item)
 
 
     # works
