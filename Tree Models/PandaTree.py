@@ -1646,6 +1646,110 @@ def majorECommerceTech():
     # works
     return str(courseTrack)
 
+#major: Human Computer Interaction
+#author: Al Abdeladi 
+def majorHumanComputerInteraction():
+    ''' Human-Computer Interaction major requirements'''
+
+    df = returnDataFrame()
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #foundation courses
+    # *HCI 440, all quarters, none
+    # *HCI 441, no records, CSC 403
+    # *NOTE: Students can take either 440 or 441
+    # HCI 450, all quarters, IT 403
+    # HCI 430, all quarters, IT 411 and enrolled/completed HCI 440/441
+
+    #Advanced Courses
+    # HCI 445, all quarters, IT 403 and HCI 440/441
+    # HCI 454, all quarters, HCI 406 and HCI 440/441
+    # HCI 460, all quarters, IT 403 and HCI 440/441
+    # HCI 470, all quarters, HCI 402 and HCI 406
+    # *HCI 511, fall, HCI 445
+    # *HCI 514, winter, HCI 445 and HCI 460
+    # *HCI 515, spring, HCI 445 and HCI 454 and HCI 430
+    # *NOTE: students can take either of the three: 511, 514, or 515
+    # Take all four from AC, and 1 of 3 from ACsub
+    AC = ['HCI 445', 'HCI 454', 'HCI 460', 'HCI 470', 'ACsub']
+    ACsub = ['HCI 511', 'HCI 514', 'HCI 515']
+
+    #3 elective courses
+    E = ['HCI 421', 'HCI 422', 'HCI 512', 'HCI 520', 'HCI 530', 'HCI 553',
+         'HCI 580', 'HCI 590', 'CNS 440', 'CSC 423', 'CSC 424', 'CSC 451',
+         'CSC 465', 'CSC 587', 'ECT 455', 'ECT 480', 'ECT 586', 'GAM 424',
+         'IS 485', 'IS 511', 'IS 570', 'IT 432', 'IT 590', 'MKT 555', 'PM 430',
+         'PM 440', 'PSY 404', 'PSY 473', 'PSY 680', 'SE 430', 'SE 482']
+
+    # 1 Open Elective, range 421-699
+    OE = ['CNS', 'CSC', 'ECT', 'GAM', 'GPH', 'HCI',
+           'HIT', 'IPD', 'IS', 'IT', 'PM', 'SE', 'TDC']
+
+    # capstone, all quarters, completion of the HCI core
+    CAP = ['HCI 594']
+
+    # dictionaries are class names to panda queries
+    # first year maps to fall winter spring
+    fallYearOne = 'Fall 2013-2014'
+    fallOne =  ['HCI 440', 'HCI 450', 'HCI 430']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2014-2015'
+    winterOne =  ['AC', 'AC', 'AC']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2014-2015'
+    springOne =  ['E', 'OE', 'AC']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+	
+    fallYearTwo = 'Fall 2015-2016'
+    fallTwo =  ['AC', 'E', 'E']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['HCI 594']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+
+
+
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'E' and course != 'OE' and course != 'AC':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'E':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'OE':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'AC':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    return str(courseTrack)
+
 majorAnimator()
 ##majorTechnicalArtist()
 ##majorBusinessIT()
