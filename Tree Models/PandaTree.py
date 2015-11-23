@@ -32,7 +32,13 @@ def randomQuery(df, myClass, mySeason):
     if "Empty DataFrame" in out:
         return "COURSE NOT FOUND, SEE ADVISOR"
 
-
+def faeQuery(df, myClass, mySeason):
+    '''Test querying for the focus area electives'''
+    pd.set_option('expand_frame_repr', False)
+    output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
+    if "Empty DataFrame" in output:
+        return "COURSE NOT FOUND, SEE ADVISOR"
+    return output
 
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
@@ -133,13 +139,16 @@ def majorAnimator():
                 courseTrack[season][course] = "SEE ADVISOR"
 
             if course == 'FAE':
-                # TODO queries for focus area electives
-                courseTrack[season][course] = "SEE ADVISOR"
+                for item in FAE:
+                    print(item)
+                    output = faeQuery(df, item, season)
+                #print(output)
+                courseTrack[season][course] = output
 
 
     # works
 
-    
+
     return str(courseTrack)
 
 
@@ -1329,7 +1338,7 @@ def majorNetworkSecurity():
     #TDC 413, all quarters, none
     #TDC 405, all quarters, none
     #CNS 418, winter, TDC 411
-    
+
     #foundation courses
     # TDC 460, all quarters, TDC 405 and TD 413
     # TDC 463, all quarters, TDC 405 and TD 413
@@ -1397,7 +1406,7 @@ def majorNetworkSecurity():
     winterTwo =  ['CAP']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1437,7 +1446,7 @@ def majorMediaArts():
     #Introductory courses (name, quarters offered, prereqs)
     #DC 414, fall, none
     #DMA 405, fall, none
-    
+
     #foundation courses
     # CMNS 570, fall, none
     # DMA 527, winter, none
@@ -1494,7 +1503,7 @@ def majorMediaArts():
     winterTwo =  ['AC', 'FAE', 'FAE']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
@@ -1529,7 +1538,7 @@ def majorECommerceTech():
     #Introductory courses (name, quarters offered, prereqs)
     #DC 414, fall, none
     #DMA 405, fall, none
-    
+
     #foundation courses
     # CMNS 570, fall, none
     # DMA 527, winter, none
@@ -1586,7 +1595,7 @@ def majorECommerceTech():
     winterTwo =  ['AC', 'FAE', 'FAE']
     winterTwo = toMap(winterTwo)
     courseTrack[winterYearTwo] = winterTwo
-    
+
     # query for course in season
     for season in list(courseTrack.keys()):
         print(season)
