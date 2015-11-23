@@ -1518,6 +1518,98 @@ def majorMediaArts():
     # works
     return str(courseTrack)
 
+# Major: E-Commerce Technology
+def majorECommerceTech():
+    ''' defines E-Commerce Technology major requirements'''
+
+    df = returnDataFrame()
+    # dict style is {season : {courseName: random panda query} }
+    courseTrack = {}
+
+    #Introductory courses (name, quarters offered, prereqs)
+    #DC 414, fall, none
+    #DMA 405, fall, none
+    
+    #foundation courses
+    # CMNS 570, fall, none
+    # DMA 527, winter, none
+    # DMA 525, winter, none
+    # MCS 575, spring, none
+
+    #Advanced Courses - take both classes
+    #DMA 555 must be taken twice, winter, none
+    AC = ['DMA 555', 'DMA 555', 'DMA 535']
+
+    #take 2 from the list
+    take2 = ['DMA 410', 'DMA 415', 'DMA 425', 'DMA 475', 'DMA 480',
+             'DMAN 490', 'EXP 440', 'EXP 441', 'HCD 401']
+
+    #Major electives - take 4
+    # 2 graduate level (400+) from College of Communication
+    # 2 graduate level (400+) from College of Communication, CDM or another
+    #college at DePaul
+    # TL,DR: take 2 from each list
+    NMS = ['NMS 502', 'NMS 504', 'NMS 508', 'NMS 509', 'NMS 520', 'NMS 521']
+    ART = ['ART 405', 'ART 427', 'ART 460', 'ART 461', 'ART 489', 'ART 490']
+
+    #NMS,ART,take2 - take 2 classes
+    #total FAEs - 6
+    FAE = ['take2', 'NMS', 'ART']
+
+    # dictionaries are class names to panda queries
+    fallYearOne = 'Fall 2012-2013'
+    fallOne =  ['DC 414', 'DMA 405', 'FAE']
+    fallOne = toMap(fallOne)
+    courseTrack[fallYearOne] = fallOne
+    # works
+    #print(fallOne)
+
+    winterYearOne = 'Winter 2013-2014'
+    winterOne =  ['DMA 527', 'DMA 525', 'AC']
+    winterOne = toMap(winterOne)
+    courseTrack[winterYearOne] = winterOne
+
+    springYearOne = 'Spring 2013-2014'
+    springOne =  ['MCS 575', 'FAE', 'AC']
+    springOne = toMap(springOne)
+    courseTrack[springYearOne] = springOne
+
+    fallYearTwo = 'Fall 2013-2014'
+    fallTwo =  ['CMNS 570', 'FAE', 'FAE']
+    fallTwo = toMap(fallTwo)
+    courseTrack[fallYearTwo] = fallTwo
+
+    # works
+    #print(fallTwo)
+
+    winterYearTwo = 'Winter 2014-2015'
+    winterTwo =  ['AC', 'FAE', 'FAE']
+    winterTwo = toMap(winterTwo)
+    courseTrack[winterYearTwo] = winterTwo
+    
+    # query for course in season
+    for season in list(courseTrack.keys()):
+        print(season)
+        for course in list(courseTrack[season].keys()):
+
+            if course != 'FAE' and course != 'AC':
+                print(course)
+                out = randomQuery(df, course, season)
+                print(out)
+                courseTrack[season][course] = out
+
+            if course == 'AC':
+                # TODO query for electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+            if course == 'FAE':
+                # TODO queries for focus area electives
+                courseTrack[season][course] = "SEE ADVISOR"
+
+
+    # works
+    return str(courseTrack)
+
 majorAnimator()
 ##majorTechnicalArtist()
 ##majorBusinessIT()
@@ -1531,3 +1623,4 @@ majorAnimator()
 ##majorGovtRiskMgmtCompl()
 ##majorNetworkSecurity()
 ##majorMediaArts()
+##majorECommerceTech()
