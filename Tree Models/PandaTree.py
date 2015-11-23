@@ -38,12 +38,13 @@ def faeQuery(df, myClass, mySeason):
     output = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)])
     print(output)
     if "Empty DataFrame" not in output:
-        output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
-        output = output.values.T.tolist()
-        return output
-        
+         output = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
+         output = output.values.T.tolist()
+         return output
+
     if "Empty DataFrame" in output:
-        return "COURSE NOT FOUND, SEE ADVISOR"
+         return "COURSE NOT FOUND, SEE ADVISOR"
+    return output
 
 # one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
@@ -70,6 +71,8 @@ def majorAnimator():
     df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
+
+    usedFAE = []
 
     # Focus Area Electives
     FAE = ['ANI 430', 'ANI 431', 'ANI 432', 'ANI 433',
@@ -145,10 +148,14 @@ def majorAnimator():
 
             if course == 'FAE':
                 for item in FAE:
+                    print(season)
                     print(item)
-                    output = faeQuery(df, item, season)
-                    if output != "COURSE NOT FOUND, SEE ADVISOR":
-                        break
+                    print(usedFAE)
+                    if item not in usedFAE:
+                        output = faeQuery(df, item, season)
+                        if "COURSE NOT FOUND, SEE ADVISOR" not in output:
+                            usedFAE.append(item)
+                            break
                 #print(output)
                 courseTrack[season][course] = output
 
