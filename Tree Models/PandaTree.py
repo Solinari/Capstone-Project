@@ -23,7 +23,10 @@ def randomQuery(df, myClass, mySeason):
     print(out)
     # if empty
     if "Empty DataFrame" not in out:
-        out = str(df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample())
+        out = df[(df['Class Name'] == myClass) & (df['Season'] == mySeason)].sample()
+        # stillis dataframe. converty to list
+        out = out.values.T.tolist()
+        print(out)
         return out
 
     if "Empty DataFrame" in out:
@@ -120,9 +123,9 @@ def majorAnimator():
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
-                print(course)
+                #print(course)
                 out = randomQuery(df, course, season)
-                print(out)
+                #print(out)
                 courseTrack[season][course] = out
 
             if course == 'E':
