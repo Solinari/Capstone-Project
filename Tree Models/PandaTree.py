@@ -27,10 +27,17 @@ def randomQuery(df, myClass, mySeason):
     return out
 
 
-# test open
+
+# one dataframe that all majors can read from
 myDF = OpenCSV2DF('Catalog.csv')
 
-randomQuery(myDF, 'ANI 423', 'Fall 2012-2013')
+def returnDataFrame():
+    '''returns global view of dataframe'''
+
+    global myDF
+    return myDF
+
+#randomQuery(myDF, 'ANI 423', 'Fall 2012-2013')
 
 # may need a dict instantiator helper function
 
@@ -40,9 +47,10 @@ def toMap(classes):
     return dict.fromkeys(classes, None)
 
 # Major: Animation; Concentration: Animator
-def majorAnimator(df):
+def majorAnimator():
     ''' defines animation major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -105,7 +113,7 @@ def majorAnimator(df):
 
     # query for course in season
     for season in list(courseTrack.keys()):
-        print(season)
+        #print(season)
         for course in list(courseTrack[season].keys()):
 
             if course != 'E' and course != 'FAE':
@@ -126,12 +134,13 @@ def majorAnimator(df):
     # works
     print(courseTrack)
 
-#majorAnimator(myDF)
+
 
 # Major: Animation; Concentration: Technical Artist
-def majorTechnicalArtist(df):
+def majorTechnicalArtist():
     ''' defines technical artist major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -230,12 +239,13 @@ def majorTechnicalArtist(df):
     # works
     print(courseTrack)
 
-#majorTechnicalArtist(myDF)
+
 
 # Major: Business Information Technology
-def majorBusinessIT(df):
+def majorBusinessIT():
     ''' defines Business Information Technology major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -321,11 +331,12 @@ def majorBusinessIT(df):
     # works
     print(courseTrack)
 
-majorBusinessIT(myDF)
 
-def majorProduction(df):
+
+def majorProduction():
     ''' defines production major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -407,11 +418,12 @@ def majorProduction(df):
     # works
     print(courseTrack)
 
-#majorProduction(myDF)
 
-def majorPostProduction(df):
+
+def majorPostProduction():
     ''' defines post production major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -493,11 +505,12 @@ def majorPostProduction(df):
     # works
     print(courseTrack)
 
-#majorPostProduction(myDF)
 
-def majorSound(df):
+
+def majorSound():
     ''' defines sound major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -579,12 +592,13 @@ def majorSound(df):
     # works
     print(courseTrack)
 
-#majorSound(myDF)
+
 
 # Major: Computational Finance
-def majorComputationalFinance(df):
+def majorComputationalFinance():
     ''' defines Computational Finance major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -679,12 +693,13 @@ def majorComputationalFinance(df):
     # works
     print(courseTrack)
 
-majorComputationalFinance(myDF)
+
 
 # Major: Computer Game Development
-def majorComputerGameDev(df):
+def majorComputerGameDev():
     ''' defines Computer Game Development major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -849,12 +864,13 @@ def majorComputerGameDev(df):
     # works
     print(courseTrack)
 
-majorComputerGameDev(myDF)
+
 
 # Major: Computer Science
-def majorComputerScience(df):
+def majorComputerScience():
     ''' defines Computer Science major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -1010,13 +1026,14 @@ def majorComputerScience(df):
     # works
     print(courseTrack)
 
-majorComputerScience(myDF)
+
 
 # Major: Computer, Information and Network Security
 # Concentration: Computer Security
-def majorComputerSecurity(df):
+def majorComputerSecurity():
     ''' defines Computer Security major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -1175,14 +1192,15 @@ def majorComputerSecurity(df):
     # works
     print(courseTrack)
 
-majorComputerSecurity(myDF)
+
 
 # Major: Computer, Information and Network Security
 # Concentration: Governance, Risk Management and Compliance 
-def majorGovtRiskMgmtCompl(df):
+def majorGovtRiskMgmtCompl():
     ''' defines Governance, Risk Management
     and Compliance major requirements'''
 
+    df = returnDataFrame()
     # dict style is {season : {courseName: random panda query} }
     courseTrack = {}
 
@@ -1288,4 +1306,17 @@ def majorGovtRiskMgmtCompl(df):
     # works
     print(courseTrack)
 
-majorGovtRiskMgmtCompl(myDF)
+
+
+
+majorAnimator()
+majorTechnicalArtist()
+majorBusinessIT()
+majorProduction()
+majorPostProduction()
+majorSound()
+majorComputationalFinance()
+majorComputerGameDev()
+majorComputerScience()
+majorComputerSecurity()
+majorGovtRiskMgmtCompl()
